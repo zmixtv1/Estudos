@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\rodri\\Documents\\GitHub\\Estudos\\PrimeiroProjeto\\PrimeiroProjeto\\PrimeiroProjeto.csproj": {}
+    "C:\\Users\\rodri\\Documents\\GitHub\\Estudos\\C#\\PrimeiroProjeto\\PrimeiroProjeto\\PrimeiroProjeto.csproj": {}
   },
   "projects": {
-    "C:\\Users\\rodri\\Documents\\GitHub\\Estudos\\PrimeiroProjeto\\PrimeiroProjeto\\PrimeiroProjeto.csproj": {
+    "C:\\Users\\rodri\\Documents\\GitHub\\Estudos\\C#\\PrimeiroProjeto\\PrimeiroProjeto\\PrimeiroProjeto.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\rodri\\Documents\\GitHub\\Estudos\\PrimeiroProjeto\\PrimeiroProjeto\\PrimeiroProjeto.csproj",
+        "projectUniqueName": "C:\\Users\\rodri\\Documents\\GitHub\\Estudos\\C#\\PrimeiroProjeto\\PrimeiroProjeto\\PrimeiroProjeto.csproj",
         "projectName": "PrimeiroProjeto",
-        "projectPath": "C:\\Users\\rodri\\Documents\\GitHub\\Estudos\\PrimeiroProjeto\\PrimeiroProjeto\\PrimeiroProjeto.csproj",
+        "projectPath": "C:\\Users\\rodri\\Documents\\GitHub\\Estudos\\C#\\PrimeiroProjeto\\PrimeiroProjeto\\PrimeiroProjeto.csproj",
         "packagesPath": "C:\\Users\\rodri\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\rodri\\Documents\\GitHub\\Estudos\\PrimeiroProjeto\\PrimeiroProjeto\\obj\\",
+        "outputPath": "C:\\Users\\rodri\\Documents\\GitHub\\Estudos\\C#\\PrimeiroProjeto\\PrimeiroProjeto\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
