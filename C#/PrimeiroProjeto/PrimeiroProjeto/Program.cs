@@ -1,5 +1,5 @@
 ﻿using System;
-
+/*
 namespace MyApp
 {
     internal class Program
@@ -15,9 +15,7 @@ namespace MyApp
 
             Console.WriteLine($"Olá {nome}, Tudo Bem?");
 
-            string resposta = Console.ReadLine();
-
-            resposta = resposta.ToLower();
+            string resposta = Console.ReadLine()?.ToLower();
 
             if (resposta == "sim")
             {
@@ -31,7 +29,7 @@ namespace MyApp
     }
 }
 
-/*
+*/
  using System;
 
 namespace MyApp
@@ -61,7 +59,7 @@ namespace MyApp
 
         static string ObterRespostaUsuario(string pergunta)
         {
-            Console.Write(pergunta + " ");
+            Console.Write(pergunta + $" \n");
             return Console.ReadLine()?.ToLower(); // Convertendo para minúsculas diretamente
         }
 
@@ -78,6 +76,3 @@ namespace MyApp
         }
     }
 }
-
- 
- */

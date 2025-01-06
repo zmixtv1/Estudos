@@ -1,0 +1,15 @@
+C:\Users\rodri\Documents\GitHub\Estudos\C#\testeSolo1\testeSolo1\bin\Debug\net8.0\testeSolo1.exe
+C:\Users\rodri\Documents\GitHub\Estudos\C#\testeSolo1\testeSolo1\bin\Debug\net8.0\testeSolo1.deps.json
+C:\Users\rodri\Documents\GitHub\Estudos\C#\testeSolo1\testeSolo1\bin\Debug\net8.0\testeSolo1.runtimeconfig.json
+C:\Users\rodri\Documents\GitHub\Estudos\C#\testeSolo1\testeSolo1\bin\Debug\net8.0\testeSolo1.dll
+C:\Users\rodri\Documents\GitHub\Estudos\C#\testeSolo1\testeSolo1\bin\Debug\net8.0\testeSolo1.pdb
+C:\Users\rodri\Documents\GitHub\Estudos\C#\testeSolo1\testeSolo1\obj\Debug\net8.0\testeSolo1.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\rodri\Documents\GitHub\Estudos\C#\testeSolo1\testeSolo1\obj\Debug\net8.0\testeSolo1.AssemblyInfoInputs.cache
+C:\Users\rodri\Documents\GitHub\Estudos\C#\testeSolo1\testeSolo1\obj\Debug\net8.0\testeSolo1.AssemblyInfo.cs
+C:\Users\rodri\Documents\GitHub\Estudos\C#\testeSolo1\testeSolo1\obj\Debug\net8.0\testeSolo1.csproj.CoreCompileInputs.cache
+C:\Users\rodri\Documents\GitHub\Estudos\C#\testeSolo1\testeSolo1\obj\Debug\net8.0\testeSolo1.sourcelink.json
+C:\Users\rodri\Documents\GitHub\Estudos\C#\testeSolo1\testeSolo1\obj\Debug\net8.0\testeSolo1.dll
+C:\Users\rodri\Documents\GitHub\Estudos\C#\testeSolo1\testeSolo1\obj\Debug\net8.0\refint\testeSolo1.dll
+C:\Users\rodri\Documents\GitHub\Estudos\C#\testeSolo1\testeSolo1\obj\Debug\net8.0\testeSolo1.pdb
+C:\Users\rodri\Documents\GitHub\Estudos\C#\testeSolo1\testeSolo1\obj\Debug\net8.0\testeSolo1.genruntimeconfig.cache
+C:\Users\rodri\Documents\GitHub\Estudos\C#\testeSolo1\testeSolo1\obj\Debug\net8.0\ref\testeSolo1.dll
