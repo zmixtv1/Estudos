@@ -1,0 +1,15 @@
+C:\Users\rodri\Documents\GitHub\Estudos\C#\Ex001\Ex001\bin\Debug\net8.0\Ex001.exe
+C:\Users\rodri\Documents\GitHub\Estudos\C#\Ex001\Ex001\bin\Debug\net8.0\Ex001.deps.json
+C:\Users\rodri\Documents\GitHub\Estudos\C#\Ex001\Ex001\bin\Debug\net8.0\Ex001.runtimeconfig.json
+C:\Users\rodri\Documents\GitHub\Estudos\C#\Ex001\Ex001\bin\Debug\net8.0\Ex001.dll
+C:\Users\rodri\Documents\GitHub\Estudos\C#\Ex001\Ex001\bin\Debug\net8.0\Ex001.pdb
+C:\Users\rodri\Documents\GitHub\Estudos\C#\Ex001\Ex001\obj\Debug\net8.0\Ex001.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\rodri\Documents\GitHub\Estudos\C#\Ex001\Ex001\obj\Debug\net8.0\Ex001.AssemblyInfoInputs.cache
+C:\Users\rodri\Documents\GitHub\Estudos\C#\Ex001\Ex001\obj\Debug\net8.0\Ex001.AssemblyInfo.cs
+C:\Users\rodri\Documents\GitHub\Estudos\C#\Ex001\Ex001\obj\Debug\net8.0\Ex001.csproj.CoreCompileInputs.cache
+C:\Users\rodri\Documents\GitHub\Estudos\C#\Ex001\Ex001\obj\Debug\net8.0\Ex001.sourcelink.json
+C:\Users\rodri\Documents\GitHub\Estudos\C#\Ex001\Ex001\obj\Debug\net8.0\Ex001.dll
+C:\Users\rodri\Documents\GitHub\Estudos\C#\Ex001\Ex001\obj\Debug\net8.0\refint\Ex001.dll
+C:\Users\rodri\Documents\GitHub\Estudos\C#\Ex001\Ex001\obj\Debug\net8.0\Ex001.pdb
+C:\Users\rodri\Documents\GitHub\Estudos\C#\Ex001\Ex001\obj\Debug\net8.0\Ex001.genruntimeconfig.cache
+C:\Users\rodri\Documents\GitHub\Estudos\C#\Ex001\Ex001\obj\Debug\net8.0\ref\Ex001.dll

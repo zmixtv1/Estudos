@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "KUKgQfssEX8=",
+  "success": true,
+  "projectFilePath": "C:\\Users\\rodri\\Documents\\GitHub\\Estudos\\C#\\Ex001\\Ex001\\Ex001.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\rodri\\.nuget\\packages\\microsoft.visualstudio.azure.containers.tools.targets\\1.21.0\\microsoft.visualstudio.azure.containers.tools.targets.1.21.0.nupkg.sha512"
+  ],
+  "logs": []
+}
