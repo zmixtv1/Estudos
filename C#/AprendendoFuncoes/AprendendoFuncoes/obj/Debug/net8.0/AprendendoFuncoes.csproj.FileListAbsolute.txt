@@ -1,0 +1,15 @@
+C:\Users\rodri\Documents\GitHub\Estudos\C#\AprendendoFuncoes\AprendendoFuncoes\bin\Debug\net8.0\AprendendoFuncoes.exe
+C:\Users\rodri\Documents\GitHub\Estudos\C#\AprendendoFuncoes\AprendendoFuncoes\bin\Debug\net8.0\AprendendoFuncoes.deps.json
+C:\Users\rodri\Documents\GitHub\Estudos\C#\AprendendoFuncoes\AprendendoFuncoes\bin\Debug\net8.0\AprendendoFuncoes.runtimeconfig.json
+C:\Users\rodri\Documents\GitHub\Estudos\C#\AprendendoFuncoes\AprendendoFuncoes\bin\Debug\net8.0\AprendendoFuncoes.dll
+C:\Users\rodri\Documents\GitHub\Estudos\C#\AprendendoFuncoes\AprendendoFuncoes\bin\Debug\net8.0\AprendendoFuncoes.pdb
+C:\Users\rodri\Documents\GitHub\Estudos\C#\AprendendoFuncoes\AprendendoFuncoes\obj\Debug\net8.0\AprendendoFuncoes.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\rodri\Documents\GitHub\Estudos\C#\AprendendoFuncoes\AprendendoFuncoes\obj\Debug\net8.0\AprendendoFuncoes.AssemblyInfoInputs.cache
+C:\Users\rodri\Documents\GitHub\Estudos\C#\AprendendoFuncoes\AprendendoFuncoes\obj\Debug\net8.0\AprendendoFuncoes.AssemblyInfo.cs
+C:\Users\rodri\Documents\GitHub\Estudos\C#\AprendendoFuncoes\AprendendoFuncoes\obj\Debug\net8.0\AprendendoFuncoes.csproj.CoreCompileInputs.cache
+C:\Users\rodri\Documents\GitHub\Estudos\C#\AprendendoFuncoes\AprendendoFuncoes\obj\Debug\net8.0\AprendendoFuncoes.sourcelink.json
+C:\Users\rodri\Documents\GitHub\Estudos\C#\AprendendoFuncoes\AprendendoFuncoes\obj\Debug\net8.0\AprendendoFuncoes.dll
+C:\Users\rodri\Documents\GitHub\Estudos\C#\AprendendoFuncoes\AprendendoFuncoes\obj\Debug\net8.0\refint\AprendendoFuncoes.dll
+C:\Users\rodri\Documents\GitHub\Estudos\C#\AprendendoFuncoes\AprendendoFuncoes\obj\Debug\net8.0\AprendendoFuncoes.pdb
+C:\Users\rodri\Documents\GitHub\Estudos\C#\AprendendoFuncoes\AprendendoFuncoes\obj\Debug\net8.0\AprendendoFuncoes.genruntimeconfig.cache
+C:\Users\rodri\Documents\GitHub\Estudos\C#\AprendendoFuncoes\AprendendoFuncoes\obj\Debug\net8.0\ref\AprendendoFuncoes.dll
