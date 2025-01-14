@@ -1,0 +1,15 @@
+C:\Users\rodri\Documents\GitHub\Estudos\C#\ExercicioDeClasses\ExercicioDeClasses\bin\Debug\net8.0\ExercicioDeClasses.exe
+C:\Users\rodri\Documents\GitHub\Estudos\C#\ExercicioDeClasses\ExercicioDeClasses\bin\Debug\net8.0\ExercicioDeClasses.deps.json
+C:\Users\rodri\Documents\GitHub\Estudos\C#\ExercicioDeClasses\ExercicioDeClasses\bin\Debug\net8.0\ExercicioDeClasses.runtimeconfig.json
+C:\Users\rodri\Documents\GitHub\Estudos\C#\ExercicioDeClasses\ExercicioDeClasses\bin\Debug\net8.0\ExercicioDeClasses.dll
+C:\Users\rodri\Documents\GitHub\Estudos\C#\ExercicioDeClasses\ExercicioDeClasses\bin\Debug\net8.0\ExercicioDeClasses.pdb
+C:\Users\rodri\Documents\GitHub\Estudos\C#\ExercicioDeClasses\ExercicioDeClasses\obj\Debug\net8.0\ExercicioDeClasses.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\rodri\Documents\GitHub\Estudos\C#\ExercicioDeClasses\ExercicioDeClasses\obj\Debug\net8.0\ExercicioDeClasses.AssemblyInfoInputs.cache
+C:\Users\rodri\Documents\GitHub\Estudos\C#\ExercicioDeClasses\ExercicioDeClasses\obj\Debug\net8.0\ExercicioDeClasses.AssemblyInfo.cs
+C:\Users\rodri\Documents\GitHub\Estudos\C#\ExercicioDeClasses\ExercicioDeClasses\obj\Debug\net8.0\ExercicioDeClasses.csproj.CoreCompileInputs.cache
+C:\Users\rodri\Documents\GitHub\Estudos\C#\ExercicioDeClasses\ExercicioDeClasses\obj\Debug\net8.0\ExercicioDeClasses.sourcelink.json
+C:\Users\rodri\Documents\GitHub\Estudos\C#\ExercicioDeClasses\ExercicioDeClasses\obj\Debug\net8.0\ExercicioDeClasses.dll
+C:\Users\rodri\Documents\GitHub\Estudos\C#\ExercicioDeClasses\ExercicioDeClasses\obj\Debug\net8.0\refint\ExercicioDeClasses.dll
+C:\Users\rodri\Documents\GitHub\Estudos\C#\ExercicioDeClasses\ExercicioDeClasses\obj\Debug\net8.0\ExercicioDeClasses.pdb
+C:\Users\rodri\Documents\GitHub\Estudos\C#\ExercicioDeClasses\ExercicioDeClasses\obj\Debug\net8.0\ExercicioDeClasses.genruntimeconfig.cache
+C:\Users\rodri\Documents\GitHub\Estudos\C#\ExercicioDeClasses\ExercicioDeClasses\obj\Debug\net8.0\ref\ExercicioDeClasses.dll
