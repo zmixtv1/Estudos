@@ -1,0 +1,15 @@
+C:\Users\rodri\Documents\GitHub\Estudos\C#\Desafio1\Desafio1\bin\Debug\net8.0\Desafio1.exe
+C:\Users\rodri\Documents\GitHub\Estudos\C#\Desafio1\Desafio1\bin\Debug\net8.0\Desafio1.deps.json
+C:\Users\rodri\Documents\GitHub\Estudos\C#\Desafio1\Desafio1\bin\Debug\net8.0\Desafio1.runtimeconfig.json
+C:\Users\rodri\Documents\GitHub\Estudos\C#\Desafio1\Desafio1\bin\Debug\net8.0\Desafio1.dll
+C:\Users\rodri\Documents\GitHub\Estudos\C#\Desafio1\Desafio1\bin\Debug\net8.0\Desafio1.pdb
+C:\Users\rodri\Documents\GitHub\Estudos\C#\Desafio1\Desafio1\obj\Debug\net8.0\Desafio1.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\rodri\Documents\GitHub\Estudos\C#\Desafio1\Desafio1\obj\Debug\net8.0\Desafio1.AssemblyInfoInputs.cache
+C:\Users\rodri\Documents\GitHub\Estudos\C#\Desafio1\Desafio1\obj\Debug\net8.0\Desafio1.AssemblyInfo.cs
+C:\Users\rodri\Documents\GitHub\Estudos\C#\Desafio1\Desafio1\obj\Debug\net8.0\Desafio1.csproj.CoreCompileInputs.cache
+C:\Users\rodri\Documents\GitHub\Estudos\C#\Desafio1\Desafio1\obj\Debug\net8.0\Desafio1.sourcelink.json
+C:\Users\rodri\Documents\GitHub\Estudos\C#\Desafio1\Desafio1\obj\Debug\net8.0\Desafio1.dll
+C:\Users\rodri\Documents\GitHub\Estudos\C#\Desafio1\Desafio1\obj\Debug\net8.0\refint\Desafio1.dll
+C:\Users\rodri\Documents\GitHub\Estudos\C#\Desafio1\Desafio1\obj\Debug\net8.0\Desafio1.pdb
+C:\Users\rodri\Documents\GitHub\Estudos\C#\Desafio1\Desafio1\obj\Debug\net8.0\Desafio1.genruntimeconfig.cache
+C:\Users\rodri\Documents\GitHub\Estudos\C#\Desafio1\Desafio1\obj\Debug\net8.0\ref\Desafio1.dll
