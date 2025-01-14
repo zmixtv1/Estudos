@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Globalization;
+using ClassTriagulo;
+
 
 namespace MyApp
 {
@@ -7,25 +9,30 @@ namespace MyApp
     {
         static void Main(string[] args)
         {
-            double x1, x2, x3, y1, y2, y3;
+
+            Triangulo x, y;
+
+            x = new Triangulo();
+            y = new Triangulo();
+
 
             Console.WriteLine("Entre com as medidas do triângulo x: ");
-            x1 = double.Parse(Console.ReadLine(), CultureInfo.InvariantCulture);
-            x2 = double.Parse(Console.ReadLine(), CultureInfo.InvariantCulture);
-            x3 = double.Parse(Console.ReadLine(), CultureInfo.InvariantCulture);
-
+            x.A = double.Parse(Console.ReadLine(), CultureInfo.InvariantCulture);
+            x.B = double.Parse(Console.ReadLine(), CultureInfo.InvariantCulture);
+            x.C = double.Parse(Console.ReadLine(), CultureInfo.InvariantCulture);
+             
             Console.WriteLine("Entre com as medidas do triângulo y: ");
 
-            y1 = double.Parse(Console.ReadLine(), CultureInfo.InvariantCulture);
-            y2 = double.Parse(Console.ReadLine(), CultureInfo.InvariantCulture);
-            y3 = double.Parse(Console.ReadLine(), CultureInfo.InvariantCulture);
+            y.A = double.Parse(Console.ReadLine(), CultureInfo.InvariantCulture);
+            y.B = double.Parse(Console.ReadLine(), CultureInfo.InvariantCulture);
+            y.C = double.Parse(Console.ReadLine(), CultureInfo.InvariantCulture);
 
 
-            double px = (x1 + x2 + x3) / 2;
-            double areax = Math.Sqrt(px * (px - x1) * (px - x2) * (px - x3));
+            double px = (x.A + x.B + x.C) / 2;
+            double areax = Math.Sqrt(px * (px - x.A) * (px - x.B) * (px - x.C));
 
-            double py = (y1 + y2 + y3) / 2;
-            double areay = Math.Sqrt(py * (py - y1) * (py - y2) * (py - y3));
+            double py = (y.A + y.B + y.C) / 2;
+            double areay = Math.Sqrt(py * (py - y.A) * (py - y.B) * (py - y.C));
 
             Console.WriteLine($"Área de x: {areax.ToString("F4", CultureInfo.InvariantCulture)}");
             Console.WriteLine($"Área de y: {areay.ToString("F4", CultureInfo.InvariantCulture)}");
