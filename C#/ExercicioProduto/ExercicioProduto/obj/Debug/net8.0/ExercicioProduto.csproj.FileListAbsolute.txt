@@ -1,0 +1,15 @@
+C:\Users\rodri\Documents\GitHub\Estudos\C#\ExercicioProduto\ExercicioProduto\bin\Debug\net8.0\ExercicioProduto.exe
+C:\Users\rodri\Documents\GitHub\Estudos\C#\ExercicioProduto\ExercicioProduto\bin\Debug\net8.0\ExercicioProduto.deps.json
+C:\Users\rodri\Documents\GitHub\Estudos\C#\ExercicioProduto\ExercicioProduto\bin\Debug\net8.0\ExercicioProduto.runtimeconfig.json
+C:\Users\rodri\Documents\GitHub\Estudos\C#\ExercicioProduto\ExercicioProduto\bin\Debug\net8.0\ExercicioProduto.dll
+C:\Users\rodri\Documents\GitHub\Estudos\C#\ExercicioProduto\ExercicioProduto\bin\Debug\net8.0\ExercicioProduto.pdb
+C:\Users\rodri\Documents\GitHub\Estudos\C#\ExercicioProduto\ExercicioProduto\obj\Debug\net8.0\ExercicioProduto.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\rodri\Documents\GitHub\Estudos\C#\ExercicioProduto\ExercicioProduto\obj\Debug\net8.0\ExercicioProduto.AssemblyInfoInputs.cache
+C:\Users\rodri\Documents\GitHub\Estudos\C#\ExercicioProduto\ExercicioProduto\obj\Debug\net8.0\ExercicioProduto.AssemblyInfo.cs
+C:\Users\rodri\Documents\GitHub\Estudos\C#\ExercicioProduto\ExercicioProduto\obj\Debug\net8.0\ExercicioProduto.csproj.CoreCompileInputs.cache
+C:\Users\rodri\Documents\GitHub\Estudos\C#\ExercicioProduto\ExercicioProduto\obj\Debug\net8.0\ExercicioProduto.sourcelink.json
+C:\Users\rodri\Documents\GitHub\Estudos\C#\ExercicioProduto\ExercicioProduto\obj\Debug\net8.0\ExercicioProduto.dll
+C:\Users\rodri\Documents\GitHub\Estudos\C#\ExercicioProduto\ExercicioProduto\obj\Debug\net8.0\refint\ExercicioProduto.dll
+C:\Users\rodri\Documents\GitHub\Estudos\C#\ExercicioProduto\ExercicioProduto\obj\Debug\net8.0\ExercicioProduto.pdb
+C:\Users\rodri\Documents\GitHub\Estudos\C#\ExercicioProduto\ExercicioProduto\obj\Debug\net8.0\ExercicioProduto.genruntimeconfig.cache
+C:\Users\rodri\Documents\GitHub\Estudos\C#\ExercicioProduto\ExercicioProduto\obj\Debug\net8.0\ref\ExercicioProduto.dll
