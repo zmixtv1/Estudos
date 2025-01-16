@@ -28,11 +28,8 @@ namespace MyApp
             y.C = double.Parse(Console.ReadLine(), CultureInfo.InvariantCulture);
 
 
-            double px = (x.A + x.B + x.C) / 2;
-            double areax = Math.Sqrt(px * (px - x.A) * (px - x.B) * (px - x.C));
-
-            double py = (y.A + y.B + y.C) / 2;
-            double areay = Math.Sqrt(py * (py - y.A) * (py - y.B) * (py - y.C));
+            double areax = x.Area();
+            double areay = y.Area();
 
             Console.WriteLine($"Área de x: {areax.ToString("F4", CultureInfo.InvariantCulture)}");
             Console.WriteLine($"Área de y: {areay.ToString("F4", CultureInfo.InvariantCulture)}");
