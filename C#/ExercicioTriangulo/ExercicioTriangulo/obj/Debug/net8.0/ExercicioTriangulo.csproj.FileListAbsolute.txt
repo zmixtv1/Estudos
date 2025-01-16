@@ -1,0 +1,15 @@
+C:\Users\rodri\Documents\GitHub\Estudos\C#\ExercicioTriangulo\ExercicioTriangulo\bin\Debug\net8.0\ExercicioTriangulo.exe
+C:\Users\rodri\Documents\GitHub\Estudos\C#\ExercicioTriangulo\ExercicioTriangulo\bin\Debug\net8.0\ExercicioTriangulo.deps.json
+C:\Users\rodri\Documents\GitHub\Estudos\C#\ExercicioTriangulo\ExercicioTriangulo\bin\Debug\net8.0\ExercicioTriangulo.runtimeconfig.json
+C:\Users\rodri\Documents\GitHub\Estudos\C#\ExercicioTriangulo\ExercicioTriangulo\bin\Debug\net8.0\ExercicioTriangulo.dll
+C:\Users\rodri\Documents\GitHub\Estudos\C#\ExercicioTriangulo\ExercicioTriangulo\bin\Debug\net8.0\ExercicioTriangulo.pdb
+C:\Users\rodri\Documents\GitHub\Estudos\C#\ExercicioTriangulo\ExercicioTriangulo\obj\Debug\net8.0\ExercicioTriangulo.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\rodri\Documents\GitHub\Estudos\C#\ExercicioTriangulo\ExercicioTriangulo\obj\Debug\net8.0\ExercicioTriangulo.AssemblyInfoInputs.cache
+C:\Users\rodri\Documents\GitHub\Estudos\C#\ExercicioTriangulo\ExercicioTriangulo\obj\Debug\net8.0\ExercicioTriangulo.AssemblyInfo.cs
+C:\Users\rodri\Documents\GitHub\Estudos\C#\ExercicioTriangulo\ExercicioTriangulo\obj\Debug\net8.0\ExercicioTriangulo.csproj.CoreCompileInputs.cache
+C:\Users\rodri\Documents\GitHub\Estudos\C#\ExercicioTriangulo\ExercicioTriangulo\obj\Debug\net8.0\ExercicioTriangulo.sourcelink.json
+C:\Users\rodri\Documents\GitHub\Estudos\C#\ExercicioTriangulo\ExercicioTriangulo\obj\Debug\net8.0\ExercicioTriangulo.dll
+C:\Users\rodri\Documents\GitHub\Estudos\C#\ExercicioTriangulo\ExercicioTriangulo\obj\Debug\net8.0\refint\ExercicioTriangulo.dll
+C:\Users\rodri\Documents\GitHub\Estudos\C#\ExercicioTriangulo\ExercicioTriangulo\obj\Debug\net8.0\ExercicioTriangulo.pdb
+C:\Users\rodri\Documents\GitHub\Estudos\C#\ExercicioTriangulo\ExercicioTriangulo\obj\Debug\net8.0\ExercicioTriangulo.genruntimeconfig.cache
+C:\Users\rodri\Documents\GitHub\Estudos\C#\ExercicioTriangulo\ExercicioTriangulo\obj\Debug\net8.0\ref\ExercicioTriangulo.dll
