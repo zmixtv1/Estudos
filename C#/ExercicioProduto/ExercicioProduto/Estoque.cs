@@ -8,28 +8,51 @@ namespace ExercicioProduto
     {
         public string Nome;
         public double Preco;
-        public int Quantidade;
-        
+        private int _quantidade;
 
-        public double ValorTotalEstoque() 
+        public int Quantidade
         {
-            double total = Preco * Quantidade;
+            get
+            {
+                return Quantidade;
+            }
+            set
+            {
+                _quantidade = value;
+            }
+        }
+
+        public Estoque()
+        {
+
+        }
+
+        public Estoque(string nome, double preco, int quantidade)
+        {
+            Nome = nome;
+            Preco = preco;
+            _quantidade = quantidade;
+        }
+
+        public double ValorTotalEstoque()
+        {
+            double total = Preco * _quantidade;
             return total;
         }
 
         public void AdicionarProdutos(int quantidade)
         {
-            Quantidade += quantidade;
+            _quantidade += quantidade;
         }
 
         public void RemoverProdutos(int quantidade)
         {
-            Quantidade -= quantidade;
+            _quantidade -= quantidade;
         }
 
         public override string ToString()
         {
-            return $"{Nome}, ${Preco.ToString("F2", CultureInfo.InvariantCulture)} e {Quantidade} unidades.\nTotal: ${ValorTotalEstoque().ToString("F2", CultureInfo.InvariantCulture)}";
+            return $"{Nome}, ${Preco.ToString("F2", CultureInfo.InvariantCulture)} e {_quantidade} unidades.\nTotal: ${ValorTotalEstoque().ToString("F2", CultureInfo.InvariantCulture)}";
         }
     }
 }
