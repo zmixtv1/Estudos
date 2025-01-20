@@ -1,0 +1,15 @@
+C:\Users\rodri\Documents\GitHub\Estudos\C#\DesafioChatGPT\DesafioChatGPT\bin\Debug\net8.0\DesafioChatGPT.exe
+C:\Users\rodri\Documents\GitHub\Estudos\C#\DesafioChatGPT\DesafioChatGPT\bin\Debug\net8.0\DesafioChatGPT.deps.json
+C:\Users\rodri\Documents\GitHub\Estudos\C#\DesafioChatGPT\DesafioChatGPT\bin\Debug\net8.0\DesafioChatGPT.runtimeconfig.json
+C:\Users\rodri\Documents\GitHub\Estudos\C#\DesafioChatGPT\DesafioChatGPT\bin\Debug\net8.0\DesafioChatGPT.dll
+C:\Users\rodri\Documents\GitHub\Estudos\C#\DesafioChatGPT\DesafioChatGPT\bin\Debug\net8.0\DesafioChatGPT.pdb
+C:\Users\rodri\Documents\GitHub\Estudos\C#\DesafioChatGPT\DesafioChatGPT\obj\Debug\net8.0\DesafioChatGPT.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\rodri\Documents\GitHub\Estudos\C#\DesafioChatGPT\DesafioChatGPT\obj\Debug\net8.0\DesafioChatGPT.AssemblyInfoInputs.cache
+C:\Users\rodri\Documents\GitHub\Estudos\C#\DesafioChatGPT\DesafioChatGPT\obj\Debug\net8.0\DesafioChatGPT.AssemblyInfo.cs
+C:\Users\rodri\Documents\GitHub\Estudos\C#\DesafioChatGPT\DesafioChatGPT\obj\Debug\net8.0\DesafioChatGPT.csproj.CoreCompileInputs.cache
+C:\Users\rodri\Documents\GitHub\Estudos\C#\DesafioChatGPT\DesafioChatGPT\obj\Debug\net8.0\DesafioChatGPT.sourcelink.json
+C:\Users\rodri\Documents\GitHub\Estudos\C#\DesafioChatGPT\DesafioChatGPT\obj\Debug\net8.0\DesafioChatGPT.dll
+C:\Users\rodri\Documents\GitHub\Estudos\C#\DesafioChatGPT\DesafioChatGPT\obj\Debug\net8.0\refint\DesafioChatGPT.dll
+C:\Users\rodri\Documents\GitHub\Estudos\C#\DesafioChatGPT\DesafioChatGPT\obj\Debug\net8.0\DesafioChatGPT.pdb
+C:\Users\rodri\Documents\GitHub\Estudos\C#\DesafioChatGPT\DesafioChatGPT\obj\Debug\net8.0\DesafioChatGPT.genruntimeconfig.cache
+C:\Users\rodri\Documents\GitHub\Estudos\C#\DesafioChatGPT\DesafioChatGPT\obj\Debug\net8.0\ref\DesafioChatGPT.dll

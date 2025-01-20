@@ -8,16 +8,25 @@ namespace DesafioChatGPT
 {
     internal class ListaTarefas
     {
-        public int IdTarefa { get; private set; }
+
         public string Descricao { get; private set; }
-        public string Status { get; private set; }
+        public string? Status { get; private set; }
 
-
-        public void AdicionarTarefa(string descricao, string status)
+        public void AdicionarTarefa(string descricao)
         {
-
+            Descricao = descricao;
+            Status = "Pendente";
         }
 
+        public string ConcluirTarefa()
+        {
+            Status = "Concluída";
+            return $"\nTarefa Concluida";
+        }
+        public override string ToString()
+        {
+            return $"Descrição: {Descricao} | Status: {Status}";
+        }
     }
 }
 

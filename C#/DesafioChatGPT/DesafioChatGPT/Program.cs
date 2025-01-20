@@ -1,4 +1,5 @@
 ﻿using System;
+using DesafioChatGPT;
 
 namespace MyApp
 {
@@ -6,7 +7,45 @@ namespace MyApp
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+
+            ListaTarefas lista = new ListaTarefas();
+
+            Console.WriteLine("=== Cadastro de Tarefas Simples ===");
+            Console.WriteLine("1. Adicionar tarefa");
+            Console.WriteLine("2. Exibir tarefa");
+            Console.WriteLine("3. Concluir tarefa");
+            Console.WriteLine("4. Sair\n");
+
+            bool sair = false;
+
+            while (!sair)
+            {
+                Console.Write("\n Escolha uma opção: ");
+                int opcao = int.Parse(Console.ReadLine());
+
+                switch (opcao)
+                {
+                    case 1:
+                        Console.Write("Digite a descrição da tarefa: ");
+                        string tarefa = Console.ReadLine();
+                        lista.AdicionarTarefa(tarefa);
+                        break;
+                    case 2:
+                        Console.WriteLine(lista); 
+                        break;
+                    case 3:
+                        Console.WriteLine(lista.ConcluirTarefa());
+                        break;
+                    case 4:
+                        Console.WriteLine("Saindo...");
+                        sair = true;
+                        break;
+                    default:
+                        Console.WriteLine("Opção inválida. Tente novamente.");
+                        break;
+                }
+            }
+
         }
     }
 }

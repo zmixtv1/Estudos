@@ -3,6 +3,10 @@
   "WorkspaceRootPath": "C:\\Users\\rodri\\Documents\\GitHub\\Estudos\\C#\\DesafioChatGPT\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{8F98F68F-81EE-4E20-AA27-FAF9FD5AA1B0}|DesafioChatGPT\\DesafioChatGPT.csproj|c:\\users\\rodri\\documents\\github\\estudos\\c#\\desafiochatgpt\\desafiochatgpt\\listatarefas.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8F98F68F-81EE-4E20-AA27-FAF9FD5AA1B0}|DesafioChatGPT\\DesafioChatGPT.csproj|solutionrelative:desafiochatgpt\\listatarefas.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{8F98F68F-81EE-4E20-AA27-FAF9FD5AA1B0}|DesafioChatGPT\\DesafioChatGPT.csproj|c:\\users\\rodri\\documents\\github\\estudos\\c#\\desafiochatgpt\\desafiochatgpt\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{8F98F68F-81EE-4E20-AA27-FAF9FD5AA1B0}|DesafioChatGPT\\DesafioChatGPT.csproj|solutionrelative:desafiochatgpt\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
@@ -19,12 +23,25 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
+              "Title": "ListaTarefas.cs",
+              "DocumentMoniker": "C:\\Users\\rodri\\Documents\\GitHub\\Estudos\\C#\\DesafioChatGPT\\DesafioChatGPT\\ListaTarefas.cs",
+              "RelativeDocumentMoniker": "DesafioChatGPT\\ListaTarefas.cs",
+              "ToolTip": "C:\\Users\\rodri\\Documents\\GitHub\\Estudos\\C#\\DesafioChatGPT\\DesafioChatGPT\\ListaTarefas.cs",
+              "RelativeToolTip": "DesafioChatGPT\\ListaTarefas.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAzAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-01-20T19:36:44.193Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
               "Title": "Program.cs",
               "DocumentMoniker": "C:\\Users\\rodri\\Documents\\GitHub\\Estudos\\C#\\DesafioChatGPT\\DesafioChatGPT\\Program.cs",
               "RelativeDocumentMoniker": "DesafioChatGPT\\Program.cs",
               "ToolTip": "C:\\Users\\rodri\\Documents\\GitHub\\Estudos\\C#\\DesafioChatGPT\\DesafioChatGPT\\Program.cs",
               "RelativeToolTip": "DesafioChatGPT\\Program.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAADQAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-01-20T19:33:47.192Z",
               "EditorCaption": ""
