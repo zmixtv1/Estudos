@@ -3,12 +3,12 @@
   "WorkspaceRootPath": "C:\\Users\\rodri\\Documents\\GitHub\\Estudos\\C#\\Encapsulamento\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{8513DBBD-20BA-4683-A4C1-80C5E2B33E55}|Encapsulamento\\Encapsulamento.csproj|c:\\users\\rodri\\documents\\github\\estudos\\c#\\encapsulamento\\encapsulamento\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{8513DBBD-20BA-4683-A4C1-80C5E2B33E55}|Encapsulamento\\Encapsulamento.csproj|solutionrelative:encapsulamento\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{8513DBBD-20BA-4683-A4C1-80C5E2B33E55}|Encapsulamento\\Encapsulamento.csproj|c:\\users\\rodri\\documents\\github\\estudos\\c#\\encapsulamento\\encapsulamento\\dadosbancarios.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{8513DBBD-20BA-4683-A4C1-80C5E2B33E55}|Encapsulamento\\Encapsulamento.csproj|solutionrelative:encapsulamento\\dadosbancarios.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8513DBBD-20BA-4683-A4C1-80C5E2B33E55}|Encapsulamento\\Encapsulamento.csproj|c:\\users\\rodri\\documents\\github\\estudos\\c#\\encapsulamento\\encapsulamento\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8513DBBD-20BA-4683-A4C1-80C5E2B33E55}|Encapsulamento\\Encapsulamento.csproj|solutionrelative:encapsulamento\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -18,30 +18,30 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 1,
+          "SelectedChildIndex": 0,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 0,
               "Title": "DadosBancarios.cs",
               "DocumentMoniker": "C:\\Users\\rodri\\Documents\\GitHub\\Estudos\\C#\\Encapsulamento\\Encapsulamento\\DadosBancarios.cs",
               "RelativeDocumentMoniker": "Encapsulamento\\DadosBancarios.cs",
               "ToolTip": "C:\\Users\\rodri\\Documents\\GitHub\\Estudos\\C#\\Encapsulamento\\Encapsulamento\\DadosBancarios.cs",
               "RelativeToolTip": "Encapsulamento\\DadosBancarios.cs",
-              "ViewState": "AgIAAAMAAAAAAAAAAAAUwCgAAAASAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAAcAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-01-18T18:08:04.903Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 1,
               "Title": "Program.cs",
               "DocumentMoniker": "C:\\Users\\rodri\\Documents\\GitHub\\Estudos\\C#\\Encapsulamento\\Encapsulamento\\Program.cs",
               "RelativeDocumentMoniker": "Encapsulamento\\Program.cs",
               "ToolTip": "C:\\Users\\rodri\\Documents\\GitHub\\Estudos\\C#\\Encapsulamento\\Encapsulamento\\Program.cs",
               "RelativeToolTip": "Encapsulamento\\Program.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAnAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-01-18T18:07:07.576Z",
               "EditorCaption": ""
