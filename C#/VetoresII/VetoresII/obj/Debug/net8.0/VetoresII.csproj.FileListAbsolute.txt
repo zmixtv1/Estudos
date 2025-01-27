@@ -1,0 +1,15 @@
+C:\Users\rodri\Documents\GitHub\Estudos\C#\VetoresII\VetoresII\bin\Debug\net8.0\VetoresII.exe
+C:\Users\rodri\Documents\GitHub\Estudos\C#\VetoresII\VetoresII\bin\Debug\net8.0\VetoresII.deps.json
+C:\Users\rodri\Documents\GitHub\Estudos\C#\VetoresII\VetoresII\bin\Debug\net8.0\VetoresII.runtimeconfig.json
+C:\Users\rodri\Documents\GitHub\Estudos\C#\VetoresII\VetoresII\bin\Debug\net8.0\VetoresII.dll
+C:\Users\rodri\Documents\GitHub\Estudos\C#\VetoresII\VetoresII\bin\Debug\net8.0\VetoresII.pdb
+C:\Users\rodri\Documents\GitHub\Estudos\C#\VetoresII\VetoresII\obj\Debug\net8.0\VetoresII.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\rodri\Documents\GitHub\Estudos\C#\VetoresII\VetoresII\obj\Debug\net8.0\VetoresII.AssemblyInfoInputs.cache
+C:\Users\rodri\Documents\GitHub\Estudos\C#\VetoresII\VetoresII\obj\Debug\net8.0\VetoresII.AssemblyInfo.cs
+C:\Users\rodri\Documents\GitHub\Estudos\C#\VetoresII\VetoresII\obj\Debug\net8.0\VetoresII.csproj.CoreCompileInputs.cache
+C:\Users\rodri\Documents\GitHub\Estudos\C#\VetoresII\VetoresII\obj\Debug\net8.0\VetoresII.sourcelink.json
+C:\Users\rodri\Documents\GitHub\Estudos\C#\VetoresII\VetoresII\obj\Debug\net8.0\VetoresII.dll
+C:\Users\rodri\Documents\GitHub\Estudos\C#\VetoresII\VetoresII\obj\Debug\net8.0\refint\VetoresII.dll
+C:\Users\rodri\Documents\GitHub\Estudos\C#\VetoresII\VetoresII\obj\Debug\net8.0\VetoresII.pdb
+C:\Users\rodri\Documents\GitHub\Estudos\C#\VetoresII\VetoresII\obj\Debug\net8.0\VetoresII.genruntimeconfig.cache
+C:\Users\rodri\Documents\GitHub\Estudos\C#\VetoresII\VetoresII\obj\Debug\net8.0\ref\VetoresII.dll
