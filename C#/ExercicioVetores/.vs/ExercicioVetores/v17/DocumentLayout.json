@@ -1,0 +1,54 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\rodri\\Documents\\GitHub\\Estudos\\C#\\ExercicioVetores\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{8F4CA289-2E77-42BF-BBD8-28659361B950}|ExercicioVetores\\ExercicioVetores.csproj|c:\\users\\rodri\\documents\\github\\estudos\\c#\\exerciciovetores\\exerciciovetores\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8F4CA289-2E77-42BF-BBD8-28659361B950}|ExercicioVetores\\ExercicioVetores.csproj|solutionrelative:exerciciovetores\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8F4CA289-2E77-42BF-BBD8-28659361B950}|ExercicioVetores\\ExercicioVetores.csproj|c:\\users\\rodri\\documents\\github\\estudos\\c#\\exerciciovetores\\exerciciovetores\\quartos.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8F4CA289-2E77-42BF-BBD8-28659361B950}|ExercicioVetores\\ExercicioVetores.csproj|solutionrelative:exerciciovetores\\quartos.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 1,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Quartos.cs",
+              "DocumentMoniker": "C:\\Users\\rodri\\Documents\\GitHub\\Estudos\\C#\\ExercicioVetores\\ExercicioVetores\\Quartos.cs",
+              "RelativeDocumentMoniker": "ExercicioVetores\\Quartos.cs",
+              "ToolTip": "C:\\Users\\rodri\\Documents\\GitHub\\Estudos\\C#\\ExercicioVetores\\ExercicioVetores\\Quartos.cs",
+              "RelativeToolTip": "ExercicioVetores\\Quartos.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAApAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-01-27T12:50:57.731Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\rodri\\Documents\\GitHub\\Estudos\\C#\\ExercicioVetores\\ExercicioVetores\\Program.cs",
+              "RelativeDocumentMoniker": "ExercicioVetores\\Program.cs",
+              "ToolTip": "C:\\Users\\rodri\\Documents\\GitHub\\Estudos\\C#\\ExercicioVetores\\ExercicioVetores\\Program.cs",
+              "RelativeToolTip": "ExercicioVetores\\Program.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-01-27T12:50:33.385Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

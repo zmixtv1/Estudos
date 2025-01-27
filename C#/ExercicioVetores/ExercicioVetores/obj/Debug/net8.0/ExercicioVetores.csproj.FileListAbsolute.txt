@@ -1,0 +1,15 @@
+C:\Users\rodri\Documents\GitHub\Estudos\C#\ExercicioVetores\ExercicioVetores\bin\Debug\net8.0\ExercicioVetores.exe
+C:\Users\rodri\Documents\GitHub\Estudos\C#\ExercicioVetores\ExercicioVetores\bin\Debug\net8.0\ExercicioVetores.deps.json
+C:\Users\rodri\Documents\GitHub\Estudos\C#\ExercicioVetores\ExercicioVetores\bin\Debug\net8.0\ExercicioVetores.runtimeconfig.json
+C:\Users\rodri\Documents\GitHub\Estudos\C#\ExercicioVetores\ExercicioVetores\bin\Debug\net8.0\ExercicioVetores.dll
+C:\Users\rodri\Documents\GitHub\Estudos\C#\ExercicioVetores\ExercicioVetores\bin\Debug\net8.0\ExercicioVetores.pdb
+C:\Users\rodri\Documents\GitHub\Estudos\C#\ExercicioVetores\ExercicioVetores\obj\Debug\net8.0\ExercicioVetores.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\rodri\Documents\GitHub\Estudos\C#\ExercicioVetores\ExercicioVetores\obj\Debug\net8.0\ExercicioVetores.AssemblyInfoInputs.cache
+C:\Users\rodri\Documents\GitHub\Estudos\C#\ExercicioVetores\ExercicioVetores\obj\Debug\net8.0\ExercicioVetores.AssemblyInfo.cs
+C:\Users\rodri\Documents\GitHub\Estudos\C#\ExercicioVetores\ExercicioVetores\obj\Debug\net8.0\ExercicioVetores.csproj.CoreCompileInputs.cache
+C:\Users\rodri\Documents\GitHub\Estudos\C#\ExercicioVetores\ExercicioVetores\obj\Debug\net8.0\ExercicioVetores.sourcelink.json
+C:\Users\rodri\Documents\GitHub\Estudos\C#\ExercicioVetores\ExercicioVetores\obj\Debug\net8.0\ExercicioVetores.dll
+C:\Users\rodri\Documents\GitHub\Estudos\C#\ExercicioVetores\ExercicioVetores\obj\Debug\net8.0\refint\ExercicioVetores.dll
+C:\Users\rodri\Documents\GitHub\Estudos\C#\ExercicioVetores\ExercicioVetores\obj\Debug\net8.0\ExercicioVetores.pdb
+C:\Users\rodri\Documents\GitHub\Estudos\C#\ExercicioVetores\ExercicioVetores\obj\Debug\net8.0\ExercicioVetores.genruntimeconfig.cache
+C:\Users\rodri\Documents\GitHub\Estudos\C#\ExercicioVetores\ExercicioVetores\obj\Debug\net8.0\ref\ExercicioVetores.dll
