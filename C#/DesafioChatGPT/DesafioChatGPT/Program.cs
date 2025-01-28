@@ -72,4 +72,58 @@ Tarefa marcada como concluída!
 
 Escolha uma opção: 2  
 ID: 1 | Descrição: Estudar C# | Status: Concluída  
-*/
+
+ 
+
+
+
+
+## OUTRO CODIGO A PARTIR DAQUI!!!!
+
+
+
+
+using System;
+
+class Pessoa
+{
+    public string Nome { get; set; }
+    public int Idade { get; set; }
+    public string Email { get; set; }
+}
+
+class Program
+{
+    static void Main()
+    {
+        List<Pessoa> pessoas = new List<Pessoa>();
+
+        // Adicionando pessoas à lista
+        pessoas.Add(new Pessoa { Nome = "Rodrigo", Idade = 30, Email = "rodrigo@email.com" });
+        pessoas.Add(new Pessoa { Nome = "Ana", Idade = 25, Email = "ana@email.com" });
+
+        // Acessando dados individualmente
+        foreach (var pessoa in pessoas)
+        {
+            Console.WriteLine($"Nome: {pessoa.Nome}, Idade: {pessoa.Idade}, Email: {pessoa.Email}");
+        }
+
+        // Filtrando pelo nome
+        var pessoaSelecionada = pessoas.Find(p => p.Email == "rodrigo@email.com");
+        if (pessoaSelecionada != null)
+        {
+            Console.WriteLine($"Nome: {pessoaSelecionada.Nome}, Idade: {pessoaSelecionada.Idade}, Email: {pessoaSelecionada.Email}");
+        }
+    }
+}
+
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ */

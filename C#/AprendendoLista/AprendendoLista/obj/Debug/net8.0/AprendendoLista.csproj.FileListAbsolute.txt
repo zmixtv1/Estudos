@@ -1,0 +1,15 @@
+C:\Users\rodri\Documents\GitHub\Estudos\C#\AprendendoLista\AprendendoLista\bin\Debug\net8.0\AprendendoLista.exe
+C:\Users\rodri\Documents\GitHub\Estudos\C#\AprendendoLista\AprendendoLista\bin\Debug\net8.0\AprendendoLista.deps.json
+C:\Users\rodri\Documents\GitHub\Estudos\C#\AprendendoLista\AprendendoLista\bin\Debug\net8.0\AprendendoLista.runtimeconfig.json
+C:\Users\rodri\Documents\GitHub\Estudos\C#\AprendendoLista\AprendendoLista\bin\Debug\net8.0\AprendendoLista.dll
+C:\Users\rodri\Documents\GitHub\Estudos\C#\AprendendoLista\AprendendoLista\bin\Debug\net8.0\AprendendoLista.pdb
+C:\Users\rodri\Documents\GitHub\Estudos\C#\AprendendoLista\AprendendoLista\obj\Debug\net8.0\AprendendoLista.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\rodri\Documents\GitHub\Estudos\C#\AprendendoLista\AprendendoLista\obj\Debug\net8.0\AprendendoLista.AssemblyInfoInputs.cache
+C:\Users\rodri\Documents\GitHub\Estudos\C#\AprendendoLista\AprendendoLista\obj\Debug\net8.0\AprendendoLista.AssemblyInfo.cs
+C:\Users\rodri\Documents\GitHub\Estudos\C#\AprendendoLista\AprendendoLista\obj\Debug\net8.0\AprendendoLista.csproj.CoreCompileInputs.cache
+C:\Users\rodri\Documents\GitHub\Estudos\C#\AprendendoLista\AprendendoLista\obj\Debug\net8.0\AprendendoLista.sourcelink.json
+C:\Users\rodri\Documents\GitHub\Estudos\C#\AprendendoLista\AprendendoLista\obj\Debug\net8.0\AprendendoLista.dll
+C:\Users\rodri\Documents\GitHub\Estudos\C#\AprendendoLista\AprendendoLista\obj\Debug\net8.0\refint\AprendendoLista.dll
+C:\Users\rodri\Documents\GitHub\Estudos\C#\AprendendoLista\AprendendoLista\obj\Debug\net8.0\AprendendoLista.pdb
+C:\Users\rodri\Documents\GitHub\Estudos\C#\AprendendoLista\AprendendoLista\obj\Debug\net8.0\AprendendoLista.genruntimeconfig.cache
+C:\Users\rodri\Documents\GitHub\Estudos\C#\AprendendoLista\AprendendoLista\obj\Debug\net8.0\ref\AprendendoLista.dll

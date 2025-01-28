@@ -1,0 +1,22 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.12.35527.113 d17.12
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AprendendoLista", "AprendendoLista\AprendendoLista.csproj", "{B805677B-B3C8-4881-AF84-70F87DDE124B}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{B805677B-B3C8-4881-AF84-70F87DDE124B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B805677B-B3C8-4881-AF84-70F87DDE124B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B805677B-B3C8-4881-AF84-70F87DDE124B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B805677B-B3C8-4881-AF84-70F87DDE124B}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
