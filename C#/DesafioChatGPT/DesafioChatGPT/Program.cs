@@ -31,13 +31,26 @@ namespace MyApp
                         lista.AdicionarTarefa(tarefa);
                         break;
                     case 2:
-                        Console.WriteLine(lista); 
+                        Console.WriteLine(lista.GetTarefa()); 
                         break;
                     case 3:
-                        Console.WriteLine(lista.ConcluirTarefa());
+                    
+                        Console.WriteLine("=== Tarefas ===");
+                        for (int i = 0; i < lista.Tarefas.Count; i++)
+                        {
+                            Console.WriteLine($"ID: {i}, Descrição: {lista.Tarefas[i].Descricao}, Status: {lista.Tarefas[i].Status}");
+
+                        }
+
+                        Console.Write("\nDigite o ID da tarefa que deseja concluir: ");
+                        int id = int.Parse(Console.ReadLine());
+
+                        string resultado = lista.SetStatus(id);
+                        Console.WriteLine(resultado);
                         break;
                     case 4:
-                        Console.WriteLine("Saindo...");
+                        Thread.Sleep(2000);
+                        Console.WriteLine("\n\nSaindo...");
                         sair = true;
                         break;
                     default:

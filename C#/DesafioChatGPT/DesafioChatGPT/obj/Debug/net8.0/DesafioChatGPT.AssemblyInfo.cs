@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("DesafioChatGPT")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+b8c2961237eac19d3f2de9d34b412670e00672ba")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+94f2cf1e9e20b4ae7f80fd2ac9601c1bc7efc627")]
 [assembly: System.Reflection.AssemblyProductAttribute("DesafioChatGPT")]
 [assembly: System.Reflection.AssemblyTitleAttribute("DesafioChatGPT")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

@@ -3,30 +3,53 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using static DesafioChatGPT.ListaTarefas;
 
 namespace DesafioChatGPT
 {
     internal class ListaTarefas
     {
+        public class Tarefa
+        {
+            public string Descricao { get; set; }
+            public string? Status { get; set; }
+        }
 
-        public string Descricao { get; private set; }
-        public string? Status { get; private set; }
+        public List<Tarefa> Tarefas { get; private set; } = new List<Tarefa>();
+
 
         public void AdicionarTarefa(string descricao)
         {
-            Descricao = descricao;
-            Status = "Pendente";
+            Tarefas.Add(new Tarefa { Descricao = descricao, Status = "Pendente" });
         }
 
-        public string ConcluirTarefa()
+
+        public string GetTarefa()
         {
-            Status = "Concluída";
-            return $"\nTarefa Concluida";
+            string resultado = null;
+
+            foreach (var tarefa in Tarefas)
+            {
+                resultado += $"Descrição: {tarefa.Descricao}, Status: {tarefa.Status}\n";
+            }
+
+            return resultado;
         }
-        public override string ToString()
+
+        public string SetStatus(int idTarefa)
         {
-            return $"Descrição: {Descricao} | Status: {Status}";
+            if (idTarefa >= 0 && idTarefa < Tarefas.Count) // Valida se o ID está dentro do intervalo válido
+            {
+                Tarefas[idTarefa].Status = "Concluído"; // Altera o status para "Concluído"
+                return $"Tarefa \"{Tarefas[idTarefa].Descricao}\" marcada como Concluída!";
+            }
+            else
+            {
+                return "ID da tarefa inválido!"; // Retorna uma mensagem de erro caso o ID seja inválido
+            }
         }
+
+
     }
 }
 
