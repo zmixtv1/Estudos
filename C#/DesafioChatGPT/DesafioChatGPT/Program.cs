@@ -49,8 +49,13 @@ namespace MyApp
                         Console.WriteLine(resultado);
                         break;
                     case 4:
-                        Thread.Sleep(2000);
-                        Console.WriteLine("\n\nSaindo...");
+                        Console.Write("\nSaindo");
+                        Thread.Sleep(500);
+                        Console.Write(".");
+                        Thread.Sleep(500);
+                        Console.Write(".");
+                        Thread.Sleep(500);
+                        Console.Write(".");
                         sair = true;
                         break;
                     default:
