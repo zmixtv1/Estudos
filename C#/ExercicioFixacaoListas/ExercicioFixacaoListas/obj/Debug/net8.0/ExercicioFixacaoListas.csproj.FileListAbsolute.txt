@@ -1,0 +1,15 @@
+C:\Users\rodri\Documents\GitHub\Estudos\C#\ExercicioFixacaoListas\ExercicioFixacaoListas\bin\Debug\net8.0\ExercicioFixacaoListas.exe
+C:\Users\rodri\Documents\GitHub\Estudos\C#\ExercicioFixacaoListas\ExercicioFixacaoListas\bin\Debug\net8.0\ExercicioFixacaoListas.deps.json
+C:\Users\rodri\Documents\GitHub\Estudos\C#\ExercicioFixacaoListas\ExercicioFixacaoListas\bin\Debug\net8.0\ExercicioFixacaoListas.runtimeconfig.json
+C:\Users\rodri\Documents\GitHub\Estudos\C#\ExercicioFixacaoListas\ExercicioFixacaoListas\bin\Debug\net8.0\ExercicioFixacaoListas.dll
+C:\Users\rodri\Documents\GitHub\Estudos\C#\ExercicioFixacaoListas\ExercicioFixacaoListas\bin\Debug\net8.0\ExercicioFixacaoListas.pdb
+C:\Users\rodri\Documents\GitHub\Estudos\C#\ExercicioFixacaoListas\ExercicioFixacaoListas\obj\Debug\net8.0\ExercicioFixacaoListas.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\rodri\Documents\GitHub\Estudos\C#\ExercicioFixacaoListas\ExercicioFixacaoListas\obj\Debug\net8.0\ExercicioFixacaoListas.AssemblyInfoInputs.cache
+C:\Users\rodri\Documents\GitHub\Estudos\C#\ExercicioFixacaoListas\ExercicioFixacaoListas\obj\Debug\net8.0\ExercicioFixacaoListas.AssemblyInfo.cs
+C:\Users\rodri\Documents\GitHub\Estudos\C#\ExercicioFixacaoListas\ExercicioFixacaoListas\obj\Debug\net8.0\ExercicioFixacaoListas.csproj.CoreCompileInputs.cache
+C:\Users\rodri\Documents\GitHub\Estudos\C#\ExercicioFixacaoListas\ExercicioFixacaoListas\obj\Debug\net8.0\ExercicioFixacaoListas.sourcelink.json
+C:\Users\rodri\Documents\GitHub\Estudos\C#\ExercicioFixacaoListas\ExercicioFixacaoListas\obj\Debug\net8.0\ExercicioFixacaoListas.dll
+C:\Users\rodri\Documents\GitHub\Estudos\C#\ExercicioFixacaoListas\ExercicioFixacaoListas\obj\Debug\net8.0\refint\ExercicioFixacaoListas.dll
+C:\Users\rodri\Documents\GitHub\Estudos\C#\ExercicioFixacaoListas\ExercicioFixacaoListas\obj\Debug\net8.0\ExercicioFixacaoListas.pdb
+C:\Users\rodri\Documents\GitHub\Estudos\C#\ExercicioFixacaoListas\ExercicioFixacaoListas\obj\Debug\net8.0\ExercicioFixacaoListas.genruntimeconfig.cache
+C:\Users\rodri\Documents\GitHub\Estudos\C#\ExercicioFixacaoListas\ExercicioFixacaoListas\obj\Debug\net8.0\ref\ExercicioFixacaoListas.dll
