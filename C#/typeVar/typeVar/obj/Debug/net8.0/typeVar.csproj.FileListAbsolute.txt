@@ -1,0 +1,15 @@
+C:\Users\rodri\Documents\GitHub\Estudos\C#\typeVar\typeVar\obj\Debug\net8.0\typeVar.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\rodri\Documents\GitHub\Estudos\C#\typeVar\typeVar\obj\Debug\net8.0\typeVar.AssemblyInfoInputs.cache
+C:\Users\rodri\Documents\GitHub\Estudos\C#\typeVar\typeVar\obj\Debug\net8.0\typeVar.AssemblyInfo.cs
+C:\Users\rodri\Documents\GitHub\Estudos\C#\typeVar\typeVar\obj\Debug\net8.0\typeVar.csproj.CoreCompileInputs.cache
+C:\Users\rodri\Documents\GitHub\Estudos\C#\typeVar\typeVar\obj\Debug\net8.0\typeVar.sourcelink.json
+C:\Users\rodri\Documents\GitHub\Estudos\C#\typeVar\typeVar\bin\Debug\net8.0\typeVar.exe
+C:\Users\rodri\Documents\GitHub\Estudos\C#\typeVar\typeVar\bin\Debug\net8.0\typeVar.deps.json
+C:\Users\rodri\Documents\GitHub\Estudos\C#\typeVar\typeVar\bin\Debug\net8.0\typeVar.runtimeconfig.json
+C:\Users\rodri\Documents\GitHub\Estudos\C#\typeVar\typeVar\bin\Debug\net8.0\typeVar.dll
+C:\Users\rodri\Documents\GitHub\Estudos\C#\typeVar\typeVar\bin\Debug\net8.0\typeVar.pdb
+C:\Users\rodri\Documents\GitHub\Estudos\C#\typeVar\typeVar\obj\Debug\net8.0\typeVar.dll
+C:\Users\rodri\Documents\GitHub\Estudos\C#\typeVar\typeVar\obj\Debug\net8.0\refint\typeVar.dll
+C:\Users\rodri\Documents\GitHub\Estudos\C#\typeVar\typeVar\obj\Debug\net8.0\typeVar.pdb
+C:\Users\rodri\Documents\GitHub\Estudos\C#\typeVar\typeVar\obj\Debug\net8.0\typeVar.genruntimeconfig.cache
+C:\Users\rodri\Documents\GitHub\Estudos\C#\typeVar\typeVar\obj\Debug\net8.0\ref\typeVar.dll
