@@ -1,0 +1,15 @@
+C:\Users\rodri\Documents\GitHub\Estudos\C#\Matriz\Matriz\bin\Debug\net8.0\Matriz.exe
+C:\Users\rodri\Documents\GitHub\Estudos\C#\Matriz\Matriz\bin\Debug\net8.0\Matriz.deps.json
+C:\Users\rodri\Documents\GitHub\Estudos\C#\Matriz\Matriz\bin\Debug\net8.0\Matriz.runtimeconfig.json
+C:\Users\rodri\Documents\GitHub\Estudos\C#\Matriz\Matriz\bin\Debug\net8.0\Matriz.dll
+C:\Users\rodri\Documents\GitHub\Estudos\C#\Matriz\Matriz\bin\Debug\net8.0\Matriz.pdb
+C:\Users\rodri\Documents\GitHub\Estudos\C#\Matriz\Matriz\obj\Debug\net8.0\Matriz.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\rodri\Documents\GitHub\Estudos\C#\Matriz\Matriz\obj\Debug\net8.0\Matriz.AssemblyInfoInputs.cache
+C:\Users\rodri\Documents\GitHub\Estudos\C#\Matriz\Matriz\obj\Debug\net8.0\Matriz.AssemblyInfo.cs
+C:\Users\rodri\Documents\GitHub\Estudos\C#\Matriz\Matriz\obj\Debug\net8.0\Matriz.csproj.CoreCompileInputs.cache
+C:\Users\rodri\Documents\GitHub\Estudos\C#\Matriz\Matriz\obj\Debug\net8.0\Matriz.sourcelink.json
+C:\Users\rodri\Documents\GitHub\Estudos\C#\Matriz\Matriz\obj\Debug\net8.0\Matriz.dll
+C:\Users\rodri\Documents\GitHub\Estudos\C#\Matriz\Matriz\obj\Debug\net8.0\refint\Matriz.dll
+C:\Users\rodri\Documents\GitHub\Estudos\C#\Matriz\Matriz\obj\Debug\net8.0\Matriz.pdb
+C:\Users\rodri\Documents\GitHub\Estudos\C#\Matriz\Matriz\obj\Debug\net8.0\Matriz.genruntimeconfig.cache
+C:\Users\rodri\Documents\GitHub\Estudos\C#\Matriz\Matriz\obj\Debug\net8.0\ref\Matriz.dll
