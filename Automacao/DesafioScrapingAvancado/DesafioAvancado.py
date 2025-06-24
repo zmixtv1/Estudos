@@ -41,7 +41,7 @@ def pegar_dados():
     autores = []
 
     for c, frases in enumerate(quantidade):
-        base = 'https://quotes.toscrape.com/'
+        base = 'https://quotes.toscrape.com'
         texto = frases.find("span", class_="text").text.strip()
         autor = frases.find("small", class_="author").text.strip()
         links_autores = base + frases.find("a").get('href')
@@ -51,19 +51,23 @@ def pegar_dados():
         tags = [tag.text.strip() for tag in grupoDasTAGS.find_all("a", class_="tag")]
         
         autores.append({
-            "Nome": autor
+            "Nome": autor,
+            "Link_autor": links_autores
         })
         
         print(f"{c}. {texto}\nAutor: {autor}\nTags: {', '.join(tags)}\nLink do autore: {links_autores}\n")
         
         
 def pegar_dados_autores(autores):
-    print("testes")
+    for autor in autores:
+        base = "https://quotes.toscrape.com/"
+        print(autor['Link_autor'])
         
     
     
 logar()
 pegar_dados()
+
 
 
 
