@@ -129,4 +129,4 @@ if __name__ == "__main__":
     print("✅ HTML salvo como preview_jogos_email.html")
 
     if jogos:
-        enviar_email("rodrigoalaor.lm@gmail.com", "Agenda de Jogos ⚽", html)
+        enviar_email("alaormoreira@gmail.com", "Agenda de Jogos ⚽", html)
