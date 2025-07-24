@@ -31,12 +31,18 @@ def coletar_jogos_filtro_ol():
 
     soup = BeautifulSoup(html, 'html.parser')
 
-    # FILTRA SOMENTE O QUE ESTÁ DENTRO DA <ol>
-    lista_jogos = soup.select_one("ol.sc-hIqOWS")
-    if not lista_jogos:
-        print("❌ Lista <ol> não encontrada.")
+    # FILTRA TODAS AS <ol> COM ESSA CLASSE
+    listas_ol = soup.select("ol.sc-hIqOWS")
+
+    # VERIFICA SE EXISTEM PELO MENOS 2
+    if len(listas_ol) < 2:
+        print("❌ Menos de duas listas <ol> encontradas.")
         return []
 
+    # PEGA A SEGUNDA <ol>
+    lista_jogos = listas_ol[1]
+
+    # PEGA OS JOGOS DENTRO DO SEGUNDO <ol>
     jogos_html = lista_jogos.find_all("div", class_="sc-dhKdcB")
     jogos = []
 
