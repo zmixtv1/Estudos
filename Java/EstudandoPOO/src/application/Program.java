@@ -35,5 +35,6 @@ public class Program {
         product.RemoveProducts(deleteQuantity);
         System.out.printf("update data: %s, $ %.2f,%d units , Total: $ $%.2f%n",product.name, product.price, product.quantity ,product.TotalValueINStock());
 
+
     }
 }
