@@ -16,4 +16,9 @@ public class Product {
     public void RemoveProducts(int quantity){
         this.quantity -= quantity;
     }
+
+    public String toString(){
+        String frase = String.valueOf(System.out.printf("%nPrintou isso %nNome: %s %nPreço: %.2f %nQuantidade: %d%n%n%n",this.name, this.price, this.quantity));
+        return frase;
+    }
 }
