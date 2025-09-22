@@ -1,171 +1,72 @@
-<!DOCTYPE html>
-<html lang="pt-BR">
+<!doctype html>
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Teste Web NFC</title>
-    <style>
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
-            background-color: #f0f2f5;
-            color: #333;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
-            margin: 0;
-            padding: 20px;
-            box-sizing: border-box;
-        }
-        .container {
-            background-color: #fff;
-            padding: 30px;
-            border-radius: 12px;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-            max-width: 500px;
-            width: 100%;
-            text-align: center;
-        }
-        h1 {
-            color: #1a73e8;
-            margin-bottom: 20px;
-        }
-        p {
-            font-size: 16px;
-            line-height: 1.5;
-            margin-bottom: 25px;
-        }
-        .button-group {
-            display: flex;
-            gap: 15px;
-            justify-content: center;
-            margin-bottom: 25px;
-        }
-        button {
-            background-color: #1a73e8;
-            color: white;
-            border: none;
-            padding: 12px 24px;
-            border-radius: 8px;
-            font-size: 16px;
-            font-weight: bold;
-            cursor: pointer;
-            transition: background-color 0.3s ease, transform 0.1s ease;
-        }
-        button:hover {
-            background-color: #155ab6;
-        }
-        button:active {
-            transform: scale(0.98);
-        }
-        button:disabled {
-            background-color: #dcdcdc;
-            cursor: not-allowed;
-        }
-        .log-container {
-            background-color: #f8f9fa;
-            border: 1px solid #e0e0e0;
-            border-radius: 8px;
-            padding: 15px;
-            height: 200px;
-            overflow-y: auto;
-            text-align: left;
-            font-family: 'Courier New', Courier, monospace;
-            font-size: 14px;
-            line-height: 1.6;
-        }
-        .log-container p {
-            margin: 0 0 5px;
-            padding: 0;
-            word-wrap: break-word;
-        }
-        .log-container .info { color: #333; }
-        .log-container .success { color: #28a745; }
-        .log-container .error { color: #dc3545; }
-    </style>
+  <meta charset="utf-8">
+  <title>Teste NFC (UID / NDEF)</title>
+  <style>
+    body { font-family: system-ui, sans-serif; padding: 20px; }
+    pre { background:#f5f5f5; padding:10px; border-radius:6px; }
+    button { padding:10px 16px; font-size:16px; }
+  </style>
 </head>
 <body>
+  <h2>Teste NFC (UID / NDEF)</h2>
+  <p>Clique em <b>Iniciar</b> e aproxime o cartão MIFARE Classic.</p>
+  <button id="start">Iniciar</button>
+  <pre id="out">Pronto.</pre>
 
-    <div class="container">
-        <h1>Teste de Leitura e Escrita NFC</h1>
-        <p>Aproxime uma tag NFC do seu celular após clicar em uma das ações. Lembre-se que esta API funciona apenas em navegadores compatíveis (como o Chrome para Android) e em páginas seguras (HTTPS).</p>
-        
-        <div class="button-group">
-            <button id="scanButton">Ler Tag</button>
-            <button id="writeButton">Escrever na Tag</button>
-        </div>
-        
-        <div class="log-container" id="log">
-            <p class="info">Aguardando ação...</p>
-        </div>
-    </div>
+  <script>
+    const out = document.getElementById('out');
+    const start = document.getElementById('start');
 
-    <script>
-        const scanButton = document.getElementById('scanButton');
-        const writeButton = document.getElementById('writeButton');
-        const logDiv = document.getElementById('log');
+    function log(...t) { out.textContent += '\\n' + t.join(' '); out.scrollTop = out.scrollHeight; }
 
-        function log(message, type = 'info') {
-            const p = document.createElement('p');
-            p.textContent = `> ${message}`;
-            p.className = type;
-            logDiv.appendChild(p);
-            // Rolagem automática para o final
-            logDiv.scrollTop = logDiv.scrollHeight;
-        }
+    start.addEventListener('click', async () => {
+      out.textContent = 'Pedindo permissão para NFC...';
+      if (!('NDEFReader' in window)) {
+        out.textContent = 'Web NFC não suportado neste navegador/dispositivo.';
+        return;
+      }
 
-        // Verifica se a API Web NFC está disponível no navegador
-        if ('NDEFReader' in window) {
-            log('API Web NFC suportada!');
+      try {
+        const ndef = new NDEFReader();
+        await ndef.scan(); // requer ação do usuário
+        out.textContent = 'Aproxime a tag... (aguardando leitura)';
 
-            scanButton.addEventListener('click', async () => {
-                log('Clique em "Ler Tag". Aproxime uma tag NFC.');
-                try {
-                    const ndef = new NDEFReader();
-                    await ndef.scan();
-                    log('Leitura iniciada com sucesso!', 'success');
-
-                    ndef.addEventListener('readingerror', () => {
-                        log('Erro ao ler a tag. Tente novamente.', 'error');
-                    });
-
-                    ndef.addEventListener('reading', ({ message, serialNumber }) => {
-                        log(`> ID da Tag: ${serialNumber}`);
-                        
-                        for (const record of message.records) {
-                            log(`>> Tipo de Registro: ${record.recordType}`);
-                            log(`>> Tipo de Mídia: ${record.mediaType || 'N/A'}`);
-                            
-                            // Decodifica o payload do registro
-                            const textDecoder = new TextDecoder(record.encoding);
-                            const payload = textDecoder.decode(record.data);
-                            log(`>> Conteúdo: ${payload}`);
-                        }
-                    });
-                } catch (error) {
-                    log(`Erro ao iniciar a leitura: ${error}`, 'error');
+        ndef.onreadingerror = () => log('Erro ao ler a tag.');
+        ndef.onreading = (event) => {
+          log('--- Leitura ---');
+          try {
+            const sn = event.serialNumber || '';
+            log('serialNumber (UID):', sn || '(não disponível)');
+            // mensagem NDEF (se houver)
+            const msg = event.message;
+            if (msg && msg.records && msg.records.length) {
+              log('Registros NDEF encontrados:', msg.records.length);
+              for (const r of msg.records) {
+                log('recordType:', r.recordType, '| mediaType:', r.mediaType || '-', '| id:', r.id || '-');
+                // tentar interpretar texto/url
+                if (r.recordType === 'text') {
+                  const textDecoder = new TextDecoder(r.encoding || 'utf-8');
+                  log('→ texto:', textDecoder.decode(r.data));
+                } else if (r.recordType === 'url') {
+                  const url = new TextDecoder().decode(r.data);
+                  log('→ url:', url);
+                } else {
+                  log('→ dados (hex):', Array.from(new Uint8Array(r.data || [])).map(b=>b.toString(16).padStart(2,'0')).join(''));
                 }
-            });
-
-            writeButton.addEventListener('click', async () => {
-                log('Clique em "Escrever na Tag". Aproxime uma tag NFC.');
-                try {
-                    const ndef = new NDEFReader();
-                    const message = `Olá, mundo! Teste de escrita via Web NFC às ${new Date().toLocaleTimeString()}`;
-                    await ndef.write(message);
-                    log(`Mensagem gravada com sucesso: "${message}"`, 'success');
-                } catch (error) {
-                    log(`Erro ao escrever na tag: ${error}`, 'error');
-                }
-            });
-
-        } else {
-            log('API Web NFC não é suportada neste navegador.', 'error');
-            scanButton.disabled = true;
-            writeButton.disabled = true;
-        }
-    </script>
-
+              }
+            } else {
+              log('Nenhum registro NDEF presente (ou tag não NDEF).');
+            }
+          } catch (e) {
+            log('Erro ao processar leitura:', e.message || e);
+          }
+        };
+      } catch (err) {
+        out.textContent = 'Falha ao iniciar scanner: ' + err;
+      }
+    });
+  </script>
 </body>
 </html>
-
