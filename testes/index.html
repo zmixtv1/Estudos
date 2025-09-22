@@ -1,70 +1,48 @@
 <!doctype html>
-<html>
+<html lang="pt-BR">
 <head>
-  <meta charset="utf-8">
-  <title>Teste NFC (UID / NDEF)</title>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <title>Teste NFC - UID</title>
   <style>
-    body { font-family: system-ui, sans-serif; padding: 20px; }
-    pre { background:#f5f5f5; padding:10px; border-radius:6px; }
-    button { padding:10px 16px; font-size:16px; }
+    body { font-family: system-ui, -apple-system, Roboto, "Segoe UI", sans-serif;
+           display:flex; flex-direction:column; gap:12px; align-items:center;
+           justify-content:center; min-height:100vh; padding:20px; background:#f7f7fb; }
+    button { padding:12px 20px; font-size:18px; border-radius:8px; cursor:pointer; }
+    #uid { font-size:20px; background:#fff; padding:16px 18px; border-radius:10px;
+           box-shadow:0 2px 6px rgba(0,0,0,0.06); min-width:220px; text-align:center; }
+    #info { font-size:13px; color:#666; text-align:center; max-width:360px; }
   </style>
 </head>
 <body>
-  <h2>Teste NFC (UID / NDEF)</h2>
-  <p>Clique em <b>Iniciar</b> e aproxime o cartão MIFARE Classic.</p>
-  <button id="start">Iniciar</button>
-  <pre id="out">Pronto.</pre>
+  <button id="start">Iniciar leitura NFC</button>
+  <div id="uid">Aguardando leitura...</div>
+  <div id="info">Abra esta página no Chrome do Android (HTTPS). Clique em "Iniciar leitura NFC" e aproxime o cartão.</div>
 
   <script>
-    const out = document.getElementById('out');
     const start = document.getElementById('start');
-
-    function log(...t) { out.textContent += '\\n' + t.join(' '); out.scrollTop = out.scrollHeight; }
-
+    const uidEl = document.getElementById('uid');
     start.addEventListener('click', async () => {
-      out.textContent = 'Pedindo permissão para NFC...';
+      uidEl.textContent = 'Pedindo permissão... aproxime o cartão';
       if (!('NDEFReader' in window)) {
-        out.textContent = 'Web NFC não suportado neste navegador/dispositivo.';
+        uidEl.textContent = 'Web NFC não suportado neste navegador/dispositivo.';
         return;
       }
-
       try {
         const ndef = new NDEFReader();
-        await ndef.scan(); // requer ação do usuário
-        out.textContent = 'Aproxime a tag... (aguardando leitura)';
-
-        ndef.onreadingerror = () => log('Erro ao ler a tag.');
-        ndef.onreading = (event) => {
-          log('--- Leitura ---');
-          try {
-            const sn = event.serialNumber || '';
-            log('serialNumber (UID):', sn || '(não disponível)');
-            // mensagem NDEF (se houver)
-            const msg = event.message;
-            if (msg && msg.records && msg.records.length) {
-              log('Registros NDEF encontrados:', msg.records.length);
-              for (const r of msg.records) {
-                log('recordType:', r.recordType, '| mediaType:', r.mediaType || '-', '| id:', r.id || '-');
-                // tentar interpretar texto/url
-                if (r.recordType === 'text') {
-                  const textDecoder = new TextDecoder(r.encoding || 'utf-8');
-                  log('→ texto:', textDecoder.decode(r.data));
-                } else if (r.recordType === 'url') {
-                  const url = new TextDecoder().decode(r.data);
-                  log('→ url:', url);
-                } else {
-                  log('→ dados (hex):', Array.from(new Uint8Array(r.data || [])).map(b=>b.toString(16).padStart(2,'0')).join(''));
-                }
-              }
-            } else {
-              log('Nenhum registro NDEF presente (ou tag não NDEF).');
-            }
-          } catch (e) {
-            log('Erro ao processar leitura:', e.message || e);
+        await ndef.scan();
+        ndef.onreadingerror = () => { uidEl.textContent = 'Erro ao ler a tag.'; };
+        ndef.onreading = (evt) => {
+          // muitos navegadores Android expõem o UID em serialNumber
+          const sn = evt.serialNumber || null;
+          if (sn) {
+            uidEl.textContent = sn;
+          } else {
+            uidEl.textContent = 'UID não disponível neste dispositivo/browser';
           }
         };
       } catch (err) {
-        out.textContent = 'Falha ao iniciar scanner: ' + err;
+        uidEl.textContent = 'Falha ao iniciar scanner: ' + (err.message || err);
       }
     });
   </script>
