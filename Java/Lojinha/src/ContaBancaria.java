@@ -7,11 +7,9 @@ public class ContaBancaria {
     public String getTitular() {
         return titular;
     }
-
     public int getNumeroConta() {
         return numeroConta;
     }
-
     public double getSaldo() {
         return saldo;
     }
