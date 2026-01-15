@@ -71,6 +71,7 @@ public class Main {
                     break;
                 default:
                     System.out.println("Opção Invalida!");
+                    System.out.println("Tente Novamente!");
             }
         }
 //
