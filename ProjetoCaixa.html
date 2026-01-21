@@ -9,6 +9,8 @@
     <script src="https://unpkg.com/lucide@latest"></script>
     <style>
         .line-through-custom { text-decoration: line-through; color: #9ca3af; }
+        input::-webkit-outer-spin-button,
+        input::-webkit-inner-spin-button { -webkit-appearance: none; margin: 0; }
     </style>
 </head>
 <body class="bg-gray-50 text-gray-900 font-sans min-h-screen">
@@ -19,7 +21,10 @@
             <div class="flex flex-col md:flex-row md:items-center justify-between gap-4">
                 <div>
                     <h1 class="text-3xl font-extrabold text-blue-800 mb-2">Washing Tech-Box Pro</h1>
-                    <p class="text-gray-600 italic">Controlo de Compras e Orçamento</p>
+                    <div class="flex items-center gap-2 text-gray-600 italic">
+                        <i data-lucide="calculator" class="w-4 h-4"></i>
+                        <span>Gestão: Preço Unit. × Qtd Comprada</span>
+                    </div>
                 </div>
                 
                 <!-- Barra de Busca -->
@@ -38,31 +43,31 @@
             <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mt-6">
                 <div class="bg-white p-4 rounded-xl shadow-sm border border-gray-100 flex items-center justify-between">
                     <div>
-                        <p class="text-xs text-gray-500 uppercase font-semibold">Progresso</p>
-                        <p id="progressText" class="text-xl font-bold">0 / 0</p>
+                        <p class="text-xs text-gray-500 uppercase font-semibold">Itens na Lista</p>
+                        <p id="progressText" class="text-xl font-bold text-blue-600">0 / 0</p>
                     </div>
                     <div class="bg-blue-50 p-2 rounded-lg text-blue-600">
-                        <i data-lucide="check-circle"></i>
+                        <i data-lucide="list-checks"></i>
                     </div>
                 </div>
                 
                 <div class="bg-white p-4 rounded-xl shadow-sm border border-gray-100 flex items-center justify-between">
                     <div>
-                        <p class="text-xs text-gray-500 uppercase font-semibold">Total Investido</p>
+                        <p class="text-xs text-gray-500 uppercase font-semibold">Total Gasto</p>
                         <p id="totalPriceText" class="text-xl font-bold text-green-600">R$ 0,00</p>
                     </div>
                     <div class="bg-green-50 p-2 rounded-lg text-green-600">
-                        <i data-lucide="dollar-sign"></i>
+                        <i data-lucide="wallet"></i>
                     </div>
                 </div>
 
                 <div class="bg-white p-4 rounded-xl shadow-sm border border-gray-100 flex items-center justify-between">
                     <div>
-                        <p class="text-xs text-gray-500 uppercase font-semibold">Conclusão</p>
+                        <p class="text-xs text-gray-500 uppercase font-semibold">Status Geral</p>
                         <p id="percentageText" class="text-xl font-bold text-gray-700">0%</p>
                     </div>
                     <div class="bg-gray-50 p-2 rounded-lg text-gray-600">
-                        <i data-lucide="package"></i>
+                        <i data-lucide="gauge"></i>
                     </div>
                 </div>
             </div>
@@ -72,7 +77,7 @@
         <main id="mainContent" class="space-y-8 pb-12"></main>
 
         <footer class="text-center text-gray-400 text-xs py-4 border-t border-gray-200">
-            Washing Tech-Box Pro Dashboard • HTML Puro • Multiplicação Automática por Qtd.
+            Washing Tech-Box Pro Dashboard • Totalizador de Precisão
         </footer>
     </div>
 
@@ -107,7 +112,18 @@
                 ]
             },
             {
-                name: "3. Estrutura e Organização",
+                name: "3. Hidráulica e Bombeamento",
+                items: [
+                    { id: 'h1', name: "Válvula Redutora/Reguladora", spec: "Controle de Pressão", qty: 1 },
+                    { id: 'h2', name: "Bomba d'água", spec: "12V / Alta Pressão", qty: 1 },
+                    { id: 'h3', name: "Tê Rosca 3/4", spec: "Conexão Hidráulica", qty: 1 },
+                    { id: 'h4', name: "Nipel Rosca 3/4", spec: "União Macho/Macho", qty: 1 },
+                    { id: 'h5', name: "Registro Esfera", spec: "Bloqueio Manual 3/4", qty: 1 },
+                    { id: 'h6', name: "Veda Rosca", spec: "Fita PTFE (Rolo)", qty: 1 },
+                ]
+            },
+            {
+                name: "4. Estrutura e Organização",
                 items: [
                     { id: 'e1', name: "Maleta Metálica", spec: "50x50x20cm", qty: 1 },
                     { id: 'e2', name: "Alça Retrátil", spec: "Modelo A6", qty: 1 },
@@ -120,7 +136,7 @@
                 ]
             },
             {
-                name: "4. Insumos de Finalização",
+                name: "5. Insumos de Finalização",
                 items: [
                     { id: 'f1', name: "Cabo PP 3x2,5mm²", spec: "10 metros", qty: 1 },
                     { id: 'f2', name: "Cabo Manga 4 Vias", spec: "5 metros", qty: 1 },
@@ -133,8 +149,8 @@
         ];
 
         // Estado da aplicação
-        let bought = {};
         let unitPrices = {};
+        let boughtQuantities = {};
         let searchTerm = "";
 
         const mainContent = document.getElementById('mainContent');
@@ -144,8 +160,8 @@
         function render() {
             mainContent.innerHTML = "";
             let totalInvested = 0;
-            let totalItems = 0;
-            let totalBought = 0;
+            let totalItemsCount = 0;
+            let totalBoughtCount = 0;
 
             initialCategories.forEach(category => {
                 const filteredItems = category.items.filter(item => 
@@ -153,12 +169,15 @@
                     item.spec.toLowerCase().includes(searchTerm.toLowerCase())
                 );
 
-                // Mesmo que não apareça no filtro, o cálculo do total é global
+                // Cálculo Global
                 category.items.forEach(item => {
-                    totalItems++;
-                    if (bought[item.id]) {
-                        totalBought++;
-                        totalInvested += (unitPrices[item.id] || 0) * item.qty;
+                    totalItemsCount++;
+                    const bQty = boughtQuantities[item.id] || 0;
+                    const uPrice = unitPrices[item.id] || 0;
+                    
+                    if (bQty > 0) {
+                        totalBoughtCount++;
+                        totalInvested += uPrice * bQty;
                     }
                 });
 
@@ -167,51 +186,72 @@
                     section.className = "bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden mb-8";
                     
                     let itemsHtml = filteredItems.map(item => {
-                        const isBought = bought[item.id] || false;
-                        const price = unitPrices[item.id] || "";
-                        const subtotal = (unitPrices[item.id] || 0) * item.qty;
+                        const bQty = boughtQuantities[item.id] || 0;
+                        const uPrice = unitPrices[item.id] || "";
+                        const itemTotal = (unitPrices[item.id] || 0) * (boughtQuantities[item.id] || 0);
+                        const isDone = bQty > 0;
 
                         return `
-                            <div class="flex flex-col md:flex-row items-start md:items-center p-4 px-6 gap-4 border-b border-gray-50 last:border-0 transition-colors ${isBought ? 'bg-green-50/30' : ''}">
-                                <button onclick="toggleBought('${item.id}')" class="flex-shrink-0">
-                                    <i data-lucide="${isBought ? 'check-circle' : 'circle'}" class="w-7 h-7 ${isBought ? 'text-green-500' : 'text-gray-300'}"></i>
-                                </button>
-                                
-                                <div class="flex-grow">
-                                    <div class="flex items-center gap-2">
-                                        <h3 class="font-medium ${isBought ? 'line-through-custom' : 'text-gray-800'}">${item.name}</h3>
-                                        <span class="px-2 py-0.5 bg-gray-100 text-gray-500 text-xs rounded-full font-bold">${item.qty}x</span>
+                            <div class="flex flex-col md:flex-row items-start md:items-center p-4 px-6 gap-6 border-b border-gray-50 last:border-0 transition-colors ${isDone ? 'bg-green-50/20' : ''}">
+                                <div class="flex-grow flex items-center gap-4">
+                                    <div class="flex-shrink-0">
+                                        <i data-lucide="${isDone ? 'check-circle' : 'circle'}" class="w-6 h-6 ${isDone ? 'text-green-500' : 'text-gray-200'}"></i>
                                     </div>
-                                    <p class="text-sm text-gray-500">${item.spec}</p>
+                                    <div>
+                                        <div class="flex items-center gap-2">
+                                            <h3 class="font-bold ${isDone ? 'text-green-800' : 'text-gray-800'}">${item.name}</h3>
+                                            <span class="text-[10px] bg-blue-50 text-blue-500 px-2 rounded-full font-bold uppercase tracking-tighter">Precisa: ${item.qty}</span>
+                                        </div>
+                                        <p class="text-xs text-gray-500">${item.spec}</p>
+                                    </div>
                                 </div>
 
-                                <div class="flex flex-col items-end gap-1 w-full md:w-auto">
-                                    <div class="flex items-center gap-2">
-                                        <span class="text-gray-400 text-[10px] uppercase font-bold">Preço Unit.</span>
-                                        <div class="flex items-center gap-1">
-                                            <span class="text-gray-400 text-xs">R$</span>
+                                <div class="grid grid-cols-2 md:grid-cols-3 gap-4 w-full md:w-auto items-center">
+                                    <!-- Input Preço -->
+                                    <div class="flex flex-col gap-1">
+                                        <label class="text-[9px] font-bold text-gray-400 uppercase">Preço Unit.</label>
+                                        <div class="flex items-center bg-gray-50 border border-gray-200 rounded-lg px-2 py-1">
+                                            <span class="text-gray-400 text-[10px] mr-1">R$</span>
                                             <input 
                                                 type="number" 
                                                 placeholder="0,00"
-                                                value="${price}"
+                                                value="${uPrice}"
                                                 oninput="updatePrice('${item.id}', this.value)"
-                                                class="w-24 bg-gray-50 border border-gray-200 rounded-lg px-2 py-1 text-right focus:outline-none focus:ring-2 focus:ring-blue-500 font-mono text-sm"
+                                                class="w-16 bg-transparent focus:outline-none text-right font-mono text-sm"
                                             >
                                         </div>
                                     </div>
-                                    ${item.qty > 1 && subtotal > 0 ? `
-                                        <div class="text-[10px] text-blue-600 font-semibold bg-blue-50 px-2 py-0.5 rounded-md">
-                                            Subtotal: R$ ${subtotal.toLocaleString('pt-BR', {minimumFractionDigits: 2})}
+
+                                    <!-- Input Qtd Comprada -->
+                                    <div class="flex flex-col gap-1">
+                                        <label class="text-[9px] font-bold text-gray-400 uppercase">Qtd Comprada</label>
+                                        <div class="flex items-center bg-gray-100 border border-gray-300 rounded-lg px-2 py-1">
+                                            <input 
+                                                type="number" 
+                                                placeholder="0"
+                                                value="${boughtQuantities[item.id] || ""}"
+                                                oninput="updateBoughtQty('${item.id}', this.value)"
+                                                class="w-full bg-transparent focus:outline-none text-center font-bold text-sm text-blue-700"
+                                            >
                                         </div>
-                                    ` : ''}
+                                    </div>
+
+                                    <!-- Total Item -->
+                                    <div class="flex flex-col gap-1 items-end col-span-2 md:col-span-1 border-t md:border-t-0 pt-2 md:pt-0">
+                                        <label class="text-[9px] font-bold text-gray-400 uppercase">Total Pago</label>
+                                        <span class="font-mono text-sm font-bold ${itemTotal > 0 ? 'text-green-600' : 'text-gray-300'}">
+                                            R$ ${itemTotal.toLocaleString('pt-BR', {minimumFractionDigits: 2})}
+                                        </span>
+                                    </div>
                                 </div>
                             </div>
                         `;
                     }).join('');
 
                     section.innerHTML = `
-                        <div class="bg-gray-50 px-6 py-4 border-b border-gray-100 font-bold text-gray-800">
-                            ${category.name}
+                        <div class="bg-gray-50 px-6 py-4 border-b border-gray-100 font-bold text-gray-800 flex items-center justify-between">
+                            <span>${category.name}</span>
+                            <i data-lucide="layers" class="w-4 h-4 text-gray-400"></i>
                         </div>
                         <div class="divide-y divide-gray-50">
                             ${itemsHtml}
@@ -222,34 +262,35 @@
             });
 
             // Atualizar cabeçalho
-            document.getElementById('progressText').innerText = `${totalBought} / ${totalItems}`;
+            document.getElementById('progressText').innerText = `${totalBoughtCount} / ${totalItemsCount}`;
             document.getElementById('totalPriceText').innerText = `R$ ${totalInvested.toLocaleString('pt-BR', {minimumFractionDigits: 2})}`;
-            document.getElementById('percentageText').innerText = `${Math.round((totalBought / (totalItems || 1)) * 100)}%`;
+            document.getElementById('percentageText').innerText = `${Math.round((totalBoughtCount / (totalItemsCount || 1)) * 100)}%`;
 
-            // Reinicializar ícones Lucide
             lucide.createIcons();
         }
 
-        // Eventos
-        window.toggleBought = (id) => {
-            bought[id] = !bought[id];
-            render();
-        };
-
+        // Funções de Update
         window.updatePrice = (id, value) => {
             unitPrices[id] = parseFloat(value) || 0;
-            // Não faz render completo no input para não perder o foco
-            // Mas precisamos recalcular os totais
-            clearTimeout(window.renderTimer);
-            window.renderTimer = setTimeout(render, 800); 
+            debounceRender();
         };
+
+        window.updateBoughtQty = (id, value) => {
+            boughtQuantities[id] = parseInt(value) || 0;
+            debounceRender();
+        };
+
+        let renderTimer;
+        function debounceRender() {
+            clearTimeout(renderTimer);
+            renderTimer = setTimeout(render, 500);
+        }
 
         searchInput.addEventListener('input', (e) => {
             searchTerm = e.target.value;
             render();
         });
 
-        // Início
         window.onload = render;
     </script>
 </body>
