@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="pt-PT">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Washing Tech-Box Pro - Checklist</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        .line-through-custom { text-decoration: line-through; color: #9ca3af; }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-900 font-sans min-h-screen">
+
+    <div class="max-w-4xl mx-auto p-4 md:p-8">
+        <!-- Cabeçalho -->
+        <header class="mb-8">
+            <div class="flex flex-col md:flex-row md:items-center justify-between gap-4">
+                <div>
+                    <h1 class="text-3xl font-extrabold text-blue-800 mb-2">Washing Tech-Box Pro</h1>
+                    <p class="text-gray-600 italic">Controlo de Compras e Orçamento</p>
+                </div>
+                
+                <!-- Barra de Busca -->
+                <div class="relative w-full md:w-72">
+                    <i data-lucide="search" class="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400 w-5 h-5"></i>
+                    <input 
+                        type="text" 
+                        id="searchInput"
+                        placeholder="Pesquisar componente..." 
+                        class="w-full pl-10 pr-4 py-2 bg-white border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 shadow-sm transition-all"
+                    >
+                </div>
+            </div>
+
+            <!-- Stats -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mt-6">
+                <div class="bg-white p-4 rounded-xl shadow-sm border border-gray-100 flex items-center justify-between">
+                    <div>
+                        <p class="text-xs text-gray-500 uppercase font-semibold">Progresso</p>
+                        <p id="progressText" class="text-xl font-bold">0 / 0</p>
+                    </div>
+                    <div class="bg-blue-50 p-2 rounded-lg text-blue-600">
+                        <i data-lucide="check-circle"></i>
+                    </div>
+                </div>
+                
+                <div class="bg-white p-4 rounded-xl shadow-sm border border-gray-100 flex items-center justify-between">
+                    <div>
+                        <p class="text-xs text-gray-500 uppercase font-semibold">Total Investido</p>
+                        <p id="totalPriceText" class="text-xl font-bold text-green-600">R$ 0,00</p>
+                    </div>
+                    <div class="bg-green-50 p-2 rounded-lg text-green-600">
+                        <i data-lucide="dollar-sign"></i>
+                    </div>
+                </div>
+
+                <div class="bg-white p-4 rounded-xl shadow-sm border border-gray-100 flex items-center justify-between">
+                    <div>
+                        <p class="text-xs text-gray-500 uppercase font-semibold">Conclusão</p>
+                        <p id="percentageText" class="text-xl font-bold text-gray-700">0%</p>
+                    </div>
+                    <div class="bg-gray-50 p-2 rounded-lg text-gray-600">
+                        <i data-lucide="package"></i>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <!-- Lista de Categorias -->
+        <main id="mainContent" class="space-y-8 pb-12"></main>
+
+        <footer class="text-center text-gray-400 text-xs py-4 border-t border-gray-200">
+            Washing Tech-Box Pro Dashboard • HTML Puro • Multiplicação Automática por Qtd.
+        </footer>
+    </div>
+
+    <script>
+        // Dados iniciais
+        const initialCategories = [
+            {
+                name: "1. Proteção e Força (220V)",
+                items: [
+                    { id: 'p1', name: "Disjuntor Bipolar", spec: "20A - Curva C", qty: 1 },
+                    { id: 'p2', name: "Dispositivo DR (IDR)", spec: "25A-30mA", qty: 1 },
+                    { id: 'p3', name: "Contatora Modular", spec: "25A-2NA (220V)", qty: 2 },
+                    { id: 'p4', name: "Botão de Emergência", spec: "XB2-ES542", qty: 1 },
+                    { id: 'p5', name: "Tomada de Embutir", spec: "20A (Pino Grosso)", qty: 2 },
+                ]
+            },
+            {
+                name: "2. Inteligência e Controle (5V/12V)",
+                items: [
+                    { id: 'i1', name: "Arduino D1 Mini", spec: "ESP8266 Wi-Fi", qty: 1 },
+                    { id: 'i2', name: "Módulo Relé", spec: "4 Canais - 5V", qty: 1 },
+                    { id: 'i3', name: "Fonte Chaveada", spec: "12V-15A", qty: 1 },
+                    { id: 'i4', name: "Módulo LM2596", spec: "DC-DC Step-Down", qty: 1 },
+                    { id: 'i5', name: "Sensor ACS712", spec: "Módulo 30A", qty: 1 },
+                    { id: 'i6', name: "Sensor de Nível", spec: "XKC-Y25-PNP", qty: 1 },
+                    { id: 'i7', name: "Conector Mike", spec: "Macho/Fêmea Metal", qty: 1 },
+                    { id: 'i8', name: "Sensor DHT11", spec: "Temp. e Humidade", qty: 1 },
+                    { id: 'i9', name: "LEDs (5mm)", spec: "Verde e Vermelho", qty: 2 },
+                    { id: 'i10', name: "Suporte de LED", spec: "Plástico 5mm", qty: 2 },
+                    { id: 'i11', name: "Buzzer Ativo", spec: "12V", qty: 1 },
+                    { id: 'i12', name: "Resistores", spec: "1k e 2k2", qty: 10 },
+                ]
+            },
+            {
+                name: "3. Estrutura e Organização",
+                items: [
+                    { id: 'e1', name: "Maleta Metálica", spec: "50x50x20cm", qty: 1 },
+                    { id: 'e2', name: "Alça Retrátil", spec: "Modelo A6", qty: 1 },
+                    { id: 'e3', name: "Trilho DIN", spec: "30cm Alumínio/Aço", qty: 1 },
+                    { id: 'e4', name: "Barramento Terra", spec: "Para Trilho DIN", qty: 1 },
+                    { id: 'e5', name: "Pente de Ligação", spec: "Bipolar (F/N)", qty: 1 },
+                    { id: 'e6', name: "Prensa-Cabos", spec: "PG9 ou PG11", qty: 3 },
+                    { id: 'e7', name: "Terminais Pino", spec: "Tubular / Ilhós", qty: 1 },
+                    { id: 'e8', name: "Conectores Wago", spec: "Linha 221", qty: 5 },
+                ]
+            },
+            {
+                name: "4. Insumos de Finalização",
+                items: [
+                    { id: 'f1', name: "Cabo PP 3x2,5mm²", spec: "10 metros", qty: 1 },
+                    { id: 'f2', name: "Cabo Manga 4 Vias", spec: "5 metros", qty: 1 },
+                    { id: 'f3', name: "Fio Flexível 0,5mm²", spec: "5 metros", qty: 1 },
+                    { id: 'f4', name: "Resina Shore A 15", spec: "1kg", qty: 1 },
+                    { id: 'f5', name: "Pezinhos de Borracha", spec: "4 unidades", qty: 1 },
+                    { id: 'f6', name: "Plugue Macho", spec: "1 unidade", qty: 1 },
+                ]
+            }
+        ];
+
+        // Estado da aplicação
+        let bought = {};
+        let unitPrices = {};
+        let searchTerm = "";
+
+        const mainContent = document.getElementById('mainContent');
+        const searchInput = document.getElementById('searchInput');
+
+        // Função para Renderizar
+        function render() {
+            mainContent.innerHTML = "";
+            let totalInvested = 0;
+            let totalItems = 0;
+            let totalBought = 0;
+
+            initialCategories.forEach(category => {
+                const filteredItems = category.items.filter(item => 
+                    item.name.toLowerCase().includes(searchTerm.toLowerCase()) || 
+                    item.spec.toLowerCase().includes(searchTerm.toLowerCase())
+                );
+
+                // Mesmo que não apareça no filtro, o cálculo do total é global
+                category.items.forEach(item => {
+                    totalItems++;
+                    if (bought[item.id]) {
+                        totalBought++;
+                        totalInvested += (unitPrices[item.id] || 0) * item.qty;
+                    }
+                });
+
+                if (filteredItems.length > 0) {
+                    const section = document.createElement('section');
+                    section.className = "bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden mb-8";
+                    
+                    let itemsHtml = filteredItems.map(item => {
+                        const isBought = bought[item.id] || false;
+                        const price = unitPrices[item.id] || "";
+                        const subtotal = (unitPrices[item.id] || 0) * item.qty;
+
+                        return `
+                            <div class="flex flex-col md:flex-row items-start md:items-center p-4 px-6 gap-4 border-b border-gray-50 last:border-0 transition-colors ${isBought ? 'bg-green-50/30' : ''}">
+                                <button onclick="toggleBought('${item.id}')" class="flex-shrink-0">
+                                    <i data-lucide="${isBought ? 'check-circle' : 'circle'}" class="w-7 h-7 ${isBought ? 'text-green-500' : 'text-gray-300'}"></i>
+                                </button>
+                                
+                                <div class="flex-grow">
+                                    <div class="flex items-center gap-2">
+                                        <h3 class="font-medium ${isBought ? 'line-through-custom' : 'text-gray-800'}">${item.name}</h3>
+                                        <span class="px-2 py-0.5 bg-gray-100 text-gray-500 text-xs rounded-full font-bold">${item.qty}x</span>
+                                    </div>
+                                    <p class="text-sm text-gray-500">${item.spec}</p>
+                                </div>
+
+                                <div class="flex flex-col items-end gap-1 w-full md:w-auto">
+                                    <div class="flex items-center gap-2">
+                                        <span class="text-gray-400 text-[10px] uppercase font-bold">Preço Unit.</span>
+                                        <div class="flex items-center gap-1">
+                                            <span class="text-gray-400 text-xs">R$</span>
+                                            <input 
+                                                type="number" 
+                                                placeholder="0,00"
+                                                value="${price}"
+                                                oninput="updatePrice('${item.id}', this.value)"
+                                                class="w-24 bg-gray-50 border border-gray-200 rounded-lg px-2 py-1 text-right focus:outline-none focus:ring-2 focus:ring-blue-500 font-mono text-sm"
+                                            >
+                                        </div>
+                                    </div>
+                                    ${item.qty > 1 && subtotal > 0 ? `
+                                        <div class="text-[10px] text-blue-600 font-semibold bg-blue-50 px-2 py-0.5 rounded-md">
+                                            Subtotal: R$ ${subtotal.toLocaleString('pt-BR', {minimumFractionDigits: 2})}
+                                        </div>
+                                    ` : ''}
+                                </div>
+                            </div>
+                        `;
+                    }).join('');
+
+                    section.innerHTML = `
+                        <div class="bg-gray-50 px-6 py-4 border-b border-gray-100 font-bold text-gray-800">
+                            ${category.name}
+                        </div>
+                        <div class="divide-y divide-gray-50">
+                            ${itemsHtml}
+                        </div>
+                    `;
+                    mainContent.appendChild(section);
+                }
+            });
+
+            // Atualizar cabeçalho
+            document.getElementById('progressText').innerText = `${totalBought} / ${totalItems}`;
+            document.getElementById('totalPriceText').innerText = `R$ ${totalInvested.toLocaleString('pt-BR', {minimumFractionDigits: 2})}`;
+            document.getElementById('percentageText').innerText = `${Math.round((totalBought / (totalItems || 1)) * 100)}%`;
+
+            // Reinicializar ícones Lucide
+            lucide.createIcons();
+        }
+
+        // Eventos
+        window.toggleBought = (id) => {
+            bought[id] = !bought[id];
+            render();
+        };
+
+        window.updatePrice = (id, value) => {
+            unitPrices[id] = parseFloat(value) || 0;
+            // Não faz render completo no input para não perder o foco
+            // Mas precisamos recalcular os totais
+            clearTimeout(window.renderTimer);
+            window.renderTimer = setTimeout(render, 800); 
+        };
+
+        searchInput.addEventListener('input', (e) => {
+            searchTerm = e.target.value;
+            render();
+        });
+
+        // Início
+        window.onload = render;
+    </script>
+</body>
+</html>
