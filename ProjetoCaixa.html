@@ -21,9 +21,15 @@
             <div class="flex flex-col md:flex-row md:items-center justify-between gap-4">
                 <div>
                     <h1 class="text-3xl font-extrabold text-blue-800 mb-2">Washing Tech-Box Pro</h1>
-                    <div class="flex items-center gap-2 text-gray-600 italic">
-                        <i data-lucide="calculator" class="w-4 h-4"></i>
-                        <span>Gestão: Preço Unit. × Qtd Comprada</span>
+                    <div class="flex items-center gap-4 text-gray-600 italic">
+                        <div class="flex items-center gap-1">
+                            <i data-lucide="save" class="w-4 h-4 text-green-500"></i>
+                            <span class="text-xs font-bold text-green-600 uppercase">Auto-Save Ativo</span>
+                        </div>
+                        <button onclick="clearAllData()" class="flex items-center gap-1 text-red-500 hover:text-red-700 transition-colors">
+                            <i data-lucide="trash-2" class="w-4 h-4"></i>
+                            <span class="text-xs font-bold uppercase">Limpar Dados</span>
+                        </button>
                     </div>
                 </div>
                 
@@ -77,7 +83,7 @@
         <main id="mainContent" class="space-y-8 pb-12"></main>
 
         <footer class="text-center text-gray-400 text-xs py-4 border-t border-gray-200">
-            Washing Tech-Box Pro Dashboard • Totalizador de Precisão
+            Washing Tech-Box Pro Dashboard • Os dados são guardados automaticamente no seu navegador.
         </footer>
     </div>
 
@@ -155,6 +161,32 @@
 
         const mainContent = document.getElementById('mainContent');
         const searchInput = document.getElementById('searchInput');
+
+        // Carregar dados salvos ao iniciar
+        function loadSavedData() {
+            const savedPrices = localStorage.getItem('techbox_unit_prices');
+            const savedQuantities = localStorage.getItem('techbox_bought_quantities');
+            
+            if (savedPrices) unitPrices = JSON.parse(savedPrices);
+            if (savedQuantities) boughtQuantities = JSON.parse(savedQuantities);
+        }
+
+        // Salvar dados no localStorage
+        function saveData() {
+            localStorage.setItem('techbox_unit_prices', JSON.stringify(unitPrices));
+            localStorage.setItem('techbox_bought_quantities', JSON.stringify(boughtQuantities));
+        }
+
+        // Limpar todos os dados
+        window.clearAllData = () => {
+            if(confirm("Deseja realmente apagar todos os preços e quantidades registados?")) {
+                unitPrices = {};
+                boughtQuantities = {};
+                localStorage.removeItem('techbox_unit_prices');
+                localStorage.removeItem('techbox_bought_quantities');
+                render();
+            }
+        }
 
         // Função para Renderizar
         function render() {
@@ -267,6 +299,7 @@
             document.getElementById('percentageText').innerText = `${Math.round((totalBoughtCount / (totalItemsCount || 1)) * 100)}%`;
 
             lucide.createIcons();
+            saveData(); // Salva sempre que renderiza
         }
 
         // Funções de Update
@@ -291,7 +324,10 @@
             render();
         });
 
-        window.onload = render;
+        window.onload = () => {
+            loadSavedData();
+            render();
+        };
     </script>
 </body>
 </html>
