@@ -15,16 +15,6 @@ public class Negativos {
 
         int[] vetor = new int[n];
 
-
-
-        //Fazer o proprio resultado melhorado, DESAFIO
-
-
-
-
-
-
-        /*
         for (int i=0; i<n; i++) {
             System.out.print("Digite um numero: ");
             vetor[i] = sc.nextInt();
@@ -37,7 +27,7 @@ public class Negativos {
                 System.out.printf("%d\n", vetor[i]);
             }
         }
-        */
+
 
 
         sc.close();
