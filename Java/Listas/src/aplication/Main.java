@@ -10,17 +10,22 @@ public class Main {
 
         List<String> lista = new ArrayList<>();
 
-        lista.add("Teste");
-        lista.add("Teste2");
-        lista.add("Teste3");
-        lista.add("Teste4");
+        lista.add("Rodrigo");
+        lista.add("Cecilia");
+        lista.add("monica");
+        lista.add("fernanda");
         lista.add("Teste5");
 
-        lista.remove("Teste2");
+        lista.remove("Teste5");
         lista.removeLast();
 
-        lista.add(1,"Teste2atualizado");
+        lista.removeIf(x -> x.charAt(0) == 'm');
 
+
+
+
+
+        lista.add(1,"Teste2 atualizado");
 
         for(String nome: lista) {
             System.out.println(nome);
