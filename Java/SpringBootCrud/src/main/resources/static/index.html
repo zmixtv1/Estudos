@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Estoque — CRUD Spring Boot</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='6' fill='%230A6A5B'/><path d='M8 12h16v13H8z' fill='none' stroke='white' stroke-width='2.4'/><path d='M6 8h20v4H6z' fill='white'/><path d='M13 17h6' stroke='white' stroke-width='2.4'/></svg>">
+    <link rel="stylesheet" href="css/estilo.css">
+</head>
+<body>
+
+<header class="cabecalho">
+    <div class="cabecalho__marca">
+        <h1 class="cabecalho__titulo">Estoque</h1>
+        <p class="cabecalho__sub">CRUD de produtos &middot; Spring Boot + JPA + H2</p>
+    </div>
+    <div class="cabecalho__acoes">
+        <span id="statusApi" class="pilula pilula--neutra">conectando&hellip;</span>
+        <button id="botaoTema" class="botao botao--icone" type="button" aria-label="Alternar tema claro e escuro">
+            <span aria-hidden="true">◐</span>
+        </button>
+    </div>
+</header>
+
+<main class="pagina">
+
+    <!-- Painel do formulario: cria um produto novo ou edita um existente -->
+    <aside class="painel">
+        <form id="formulario" class="formulario" autocomplete="off">
+            <h2 id="tituloFormulario" class="painel__titulo">Novo produto</h2>
+
+            <input type="hidden" id="produtoId">
+
+            <div class="campo">
+                <label for="nome">Nome</label>
+                <input type="text" id="nome" name="nome" required maxlength="60" placeholder="Notebook">
+            </div>
+
+            <div class="campo">
+                <label for="descricao">Descrição</label>
+                <input type="text" id="descricao" name="descricao" maxlength="120" placeholder="Notebook 16GB RAM">
+            </div>
+
+            <div class="campo-duplo">
+                <div class="campo">
+                    <label for="preco">Preço (R$)</label>
+                    <input type="number" id="preco" name="preco" required min="0" step="0.01" placeholder="0,00">
+                </div>
+                <div class="campo">
+                    <label for="quantidade">Quantidade</label>
+                    <input type="number" id="quantidade" name="quantidade" required min="0" step="1" placeholder="0">
+                </div>
+            </div>
+
+            <div class="formulario__botoes">
+                <button type="submit" id="botaoSalvar" class="botao botao--primario">Cadastrar</button>
+                <button type="button" id="botaoCancelar" class="botao botao--fantasma" hidden>Cancelar edição</button>
+            </div>
+        </form>
+
+        <p class="painel__dica">
+            Os dados ficam num banco H2 em memória: ao parar a aplicação, tudo volta ao estado inicial
+            do <code>data.sql</code>.
+        </p>
+    </aside>
+
+    <section class="conteudo">
+
+        <!-- Resumo: os numeros que valem ser lidos antes da tabela -->
+        <div class="resumo">
+            <div class="resumo__item">
+                <span class="resumo__rotulo">Produtos cadastrados</span>
+                <span class="resumo__valor" id="resumoTotal">—</span>
+            </div>
+            <div class="resumo__item">
+                <span class="resumo__rotulo">Valor em estoque</span>
+                <span class="resumo__valor" id="resumoValor">—</span>
+            </div>
+            <div class="resumo__item">
+                <span class="resumo__rotulo">Precisam de reposição</span>
+                <span class="resumo__valor" id="resumoBaixo">—</span>
+            </div>
+        </div>
+
+        <div class="barra-busca">
+            <label class="campo campo--busca">
+                <span class="sr-apenas">Buscar por nome</span>
+                <input type="search" id="busca" placeholder="Buscar por nome…">
+            </label>
+            <button type="button" id="botaoAtualizar" class="botao botao--fantasma">Atualizar lista</button>
+        </div>
+
+        <div id="aviso" class="aviso" role="status" aria-live="polite" hidden></div>
+
+        <div class="tabela-caixa">
+            <table class="tabela">
+                <caption class="sr-apenas">Lista de produtos cadastrados</caption>
+                <thead>
+                <tr>
+                    <th scope="col" class="col-id">Id</th>
+                    <th scope="col">Produto</th>
+                    <th scope="col" class="num">Preço</th>
+                    <th scope="col" class="num">Qtd.</th>
+                    <th scope="col">Situação</th>
+                    <th scope="col" class="num">Total</th>
+                    <th scope="col"><span class="sr-apenas">Ações</span></th>
+                </tr>
+                </thead>
+                <tbody id="corpoTabela"></tbody>
+            </table>
+        </div>
+
+        <div id="vazio" class="vazio" hidden>
+            <p class="vazio__titulo">Nenhum produto por aqui</p>
+            <p class="vazio__texto">Cadastre um produto no formulário ao lado para começar.</p>
+        </div>
+
+    </section>
+</main>
+
+<footer class="rodape">
+    <span>API em <code>/produtos</code></span>
+    <span class="rodape__sep" aria-hidden="true">&middot;</span>
+    <a href="/h2-console" target="_blank" rel="noopener">Abrir console do H2</a>
+</footer>
+
+<script src="js/app.js"></script>
+</body>
+</html>
