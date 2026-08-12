@@ -67,23 +67,34 @@ public class Worker {
         this.contracts = contracts;
     }
 
-    public void addContract(HourContract contract){
+    public void addContract(HourContract contract) {
         contracts.add(contract);
     }
 
-    public void removeContract(HourContract contract){
+    public void removeContract(HourContract contract) {
         contracts.remove(contract);
     }
 
-    public Double income(int year, int month){
+    public Double income(int year, int month) {
         double sum = baseSalary;
 
-        for(HourContract c : contracts){
+        for (HourContract c : contracts) {
             LocalDate date = c.getDate();
-            if (date.getYear() == year && date.getMonthValue() == month){
-                sum+= c.totalValue();
+            if (date.getYear() == year && date.getMonthValue() == month) {
+                sum += c.totalValue();
             }
         }
+        return sum;
     }
 
+    @Override
+    public String toString() {
+        return "Worker{" +
+                "name='" + name + '\'' +
+                ", level=" + level +
+                ", baseSalary=" + baseSalary +
+                ", departament=" + departament +
+                ", contracts=" + contracts +
+                '}';
+    }
 }
