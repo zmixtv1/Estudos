@@ -1,0 +1,881 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Bancada de Gestos</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+<style>
+  /* ============================================================
+     Instrumento de bancada. Tema unico e assumido: fosforo ciano
+     sobre tinta escura — pensado para projetor em sala.
+     ============================================================ */
+  :root {
+    --tinta:      #060b10;
+    --painel:     #0b1219;
+    --painel-alto:#101a23;
+    --traco:      #172733;
+    --traco-forte:#223746;
+
+    --ciano:      #22d3ee;
+    --ciano-fraco:#0e7490;
+    --ciano-claro:#a5f3fc;
+    --indigo:     #7c8cff;
+
+    --texto:      #dbe9f0;
+    --nevoa:      #7b909e;
+    --nevoa-fraca:#4d616f;
+
+    --ambar:      #f0b429;
+    --rosa:       #ff6b6b;
+
+    --mono: "IBM Plex Mono", ui-monospace, "Cascadia Mono", Consolas, monospace;
+    --sans: "IBM Plex Sans", system-ui, "Segoe UI", sans-serif;
+
+    --raio: 4px;
+    --gap: 18px;
+  }
+
+  * { box-sizing: border-box; }
+
+  html { color-scheme: dark; }
+
+  body {
+    margin: 0;
+    min-height: 100vh;
+    padding: 26px 22px 40px;
+    background:
+      radial-gradient(1100px 620px at 72% -10%, rgba(34,211,238,.10), transparent 62%),
+      radial-gradient(760px 520px at 4% 106%, rgba(124,140,255,.06), transparent 60%),
+      var(--tinta);
+    color: var(--texto);
+    font-family: var(--sans);
+    font-size: 15px;
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .folha { max-width: 1220px; margin: 0 auto; }
+
+  /* ---------- placa de identificacao ---------- */
+  .placa {
+    display: flex; align-items: flex-end; justify-content: space-between;
+    flex-wrap: wrap; gap: 16px;
+    padding-bottom: 16px; margin-bottom: var(--gap);
+    border-bottom: 1px solid var(--traco);
+  }
+  .placa .eixo { display: flex; align-items: center; gap: 14px; }
+  .selo {
+    width: 34px; height: 34px; flex: none;
+    border: 1px solid var(--traco-forte); border-radius: 50%;
+    display: grid; place-items: center;
+  }
+  .selo i {
+    width: 9px; height: 9px; border-radius: 50%;
+    background: var(--ciano); box-shadow: 0 0 12px var(--ciano);
+  }
+  h1 {
+    margin: 0; font-family: var(--sans);
+    font-size: 19px; font-weight: 600; letter-spacing: -.15px;
+    text-wrap: balance;
+  }
+  .sub {
+    display: block; margin-top: 3px;
+    font-family: var(--mono); font-size: 11px; font-weight: 400;
+    letter-spacing: .1em; text-transform: uppercase; color: var(--nevoa-fraca);
+  }
+
+  .leituras { display: flex; align-items: center; gap: 10px; }
+  .leitura {
+    font-family: var(--mono); font-size: 11.5px; letter-spacing: .06em;
+    color: var(--nevoa); font-variant-numeric: tabular-nums;
+    padding: 6px 11px; border: 1px solid var(--traco); border-radius: var(--raio);
+    background: var(--painel);
+  }
+  .leitura b { color: var(--texto); font-weight: 500; }
+
+  .sinalizador {
+    display: inline-flex; align-items: center; gap: 9px;
+    font-family: var(--mono); font-size: 11.5px; font-weight: 500;
+    letter-spacing: .12em; text-transform: uppercase; color: var(--nevoa);
+    padding: 6px 13px; border: 1px solid var(--traco); border-radius: var(--raio);
+    background: var(--painel);
+  }
+  .sinalizador::before {
+    content: ""; width: 7px; height: 7px; border-radius: 50%;
+    background: var(--nevoa-fraca); transition: background .2s, box-shadow .2s;
+  }
+  .sinalizador[data-estado="carregando"] { color: var(--ambar); border-color: rgba(240,180,41,.28); }
+  .sinalizador[data-estado="carregando"]::before { background: var(--ambar); box-shadow: 0 0 9px var(--ambar); }
+  .sinalizador[data-estado="vivo"] { color: var(--ciano); border-color: rgba(34,211,238,.32); }
+  .sinalizador[data-estado="vivo"]::before { background: var(--ciano); box-shadow: 0 0 10px var(--ciano); animation: piscar 1.8s ease-in-out infinite; }
+  .sinalizador[data-estado="erro"] { color: var(--rosa); border-color: rgba(255,107,107,.3); }
+  .sinalizador[data-estado="erro"]::before { background: var(--rosa); box-shadow: 0 0 9px var(--rosa); }
+  @keyframes piscar { 50% { opacity: .3; } }
+
+  /* ---------- estrutura ---------- */
+  .bancada {
+    display: grid; grid-template-columns: 322px minmax(0, 1fr); gap: var(--gap);
+    align-items: start;
+  }
+  .coluna { display: grid; gap: var(--gap); }
+  @media (max-width: 940px) { .bancada { grid-template-columns: 1fr; } }
+
+  .modulo {
+    background: var(--painel);
+    border: 1px solid var(--traco);
+    border-radius: var(--raio);
+  }
+  .modulo > h2 {
+    margin: 0; padding: 12px 18px;
+    border-bottom: 1px solid var(--traco);
+    font-family: var(--mono); font-size: 10.5px; font-weight: 500;
+    letter-spacing: .16em; text-transform: uppercase; color: var(--nevoa-fraca);
+    display: flex; justify-content: space-between; align-items: center; gap: 12px;
+  }
+  .corpo { padding: 18px; }
+
+  /* ---------- controles ---------- */
+  .campo + .campo { margin-top: 16px; }
+  .campo > label {
+    display: flex; justify-content: space-between; align-items: baseline; gap: 10px;
+    font-family: var(--mono); font-size: 10.5px; font-weight: 500;
+    letter-spacing: .13em; text-transform: uppercase; color: var(--nevoa);
+    margin-bottom: 7px;
+  }
+  .campo > label .medida {
+    font-size: 11.5px; letter-spacing: .02em; text-transform: none;
+    color: var(--ciano-claro); font-variant-numeric: tabular-nums;
+  }
+
+  input[type=text], select {
+    width: 100%; padding: 10px 11px;
+    background: var(--tinta); color: var(--texto);
+    border: 1px solid var(--traco-forte); border-radius: var(--raio);
+    font-family: var(--mono); font-size: 12.5px;
+    transition: border-color .15s, box-shadow .15s;
+  }
+  input[type=text]::placeholder { color: var(--nevoa-fraca); }
+  select { font-family: var(--sans); font-size: 13.5px; }
+  input:focus-visible, select:focus-visible, button:focus-visible {
+    outline: none; border-color: var(--ciano);
+    box-shadow: 0 0 0 3px rgba(34,211,238,.18);
+  }
+  select:disabled { color: var(--nevoa-fraca); }
+
+  input[type=range] {
+    width: 100%; height: 22px; margin: 0; background: transparent;
+    -webkit-appearance: none; appearance: none; cursor: pointer;
+  }
+  input[type=range]::-webkit-slider-runnable-track {
+    height: 3px; background: var(--traco-forte); border-radius: 2px;
+  }
+  input[type=range]::-webkit-slider-thumb {
+    -webkit-appearance: none; appearance: none;
+    width: 14px; height: 14px; margin-top: -5.5px;
+    border-radius: 50%; background: var(--ciano);
+    box-shadow: 0 0 10px rgba(34,211,238,.55);
+  }
+  input[type=range]::-moz-range-track { height: 3px; background: var(--traco-forte); border-radius: 2px; }
+  input[type=range]::-moz-range-thumb {
+    width: 14px; height: 14px; border: 0; border-radius: 50%;
+    background: var(--ciano); box-shadow: 0 0 10px rgba(34,211,238,.55);
+  }
+  input[type=range]:focus-visible { outline: none; }
+  input[type=range]:focus-visible::-webkit-slider-thumb { box-shadow: 0 0 0 4px rgba(34,211,238,.25); }
+
+  .acoes { display: grid; grid-template-columns: 1fr auto; gap: 9px; margin-top: 20px; }
+  button {
+    padding: 11px 18px; border-radius: var(--raio);
+    border: 1px solid var(--ciano-fraco);
+    background: rgba(34,211,238,.12); color: var(--ciano-claro);
+    font-family: var(--mono); font-size: 12px; font-weight: 600;
+    letter-spacing: .1em; text-transform: uppercase; cursor: pointer;
+    transition: background .15s, color .15s, opacity .15s;
+  }
+  button:hover:not(:disabled) { background: rgba(34,211,238,.2); color: #e0fbff; }
+  button.discreto {
+    background: transparent; border-color: var(--traco-forte); color: var(--nevoa);
+  }
+  button.discreto:hover:not(:disabled) { border-color: var(--nevoa); color: var(--texto); background: transparent; }
+  button:disabled { opacity: .32; cursor: not-allowed; }
+
+  .recado {
+    margin-top: 13px; min-height: 34px;
+    font-size: 12.5px; line-height: 1.45; color: var(--nevoa);
+  }
+  .recado[data-tom="erro"] { color: var(--rosa); }
+
+  /* ---------- lampada ---------- */
+  .indicador {
+    display: grid; grid-template-columns: 260px minmax(0, 1fr); gap: 26px;
+    align-items: center; padding: 26px 22px;
+  }
+  @media (max-width: 760px) { .indicador { grid-template-columns: 1fr; } }
+
+  .lampada { position: relative; display: grid; place-items: center; }
+  .halo {
+    position: absolute; width: 260px; height: 260px; border-radius: 50%;
+    background: radial-gradient(circle, rgba(34,211,238,.30), transparent 62%);
+    opacity: 0; transition: opacity .3s; pointer-events: none;
+  }
+  .aceso .halo { opacity: 1; }
+
+  .anel { position: absolute; width: 216px; height: 216px; transform: rotate(-90deg); }
+  .anel circle { fill: none; stroke-width: 2; }
+  .anel .pista { stroke: var(--traco); }
+  .anel .carga {
+    stroke: var(--ciano); stroke-linecap: round;
+    filter: drop-shadow(0 0 5px rgba(34,211,238,.75));
+    transition: stroke-dashoffset .08s linear;
+  }
+
+  .bulbo {
+    position: relative; width: 168px; height: 168px; border-radius: 50%;
+    background: radial-gradient(circle at 36% 30%, #16242e, #0a1219 58%, #070d12);
+    box-shadow:
+      inset 0 -12px 26px rgba(0,0,0,.8),
+      inset 0 10px 22px rgba(165,243,252,.05),
+      0 0 0 1px var(--traco);
+    transition: background .18s, box-shadow .18s;
+  }
+  .aceso .bulbo {
+    background: radial-gradient(circle at 36% 30%, #e8feff, #22d3ee 44%, #0891b2);
+    box-shadow:
+      inset 0 -10px 24px rgba(6,120,140,.5),
+      inset 0 10px 22px rgba(255,255,255,.45),
+      0 0 42px 6px rgba(34,211,238,.5),
+      0 0 120px 30px rgba(34,211,238,.18);
+  }
+
+  .leitura-estado {
+    margin-top: 20px; text-align: center;
+    font-family: var(--mono); font-size: 22px; font-weight: 600;
+    letter-spacing: .3em; text-indent: .3em; color: var(--nevoa-fraca);
+    transition: color .2s, text-shadow .2s;
+  }
+  .aceso .leitura-estado { color: var(--ciano-claro); text-shadow: 0 0 22px rgba(34,211,238,.55); }
+
+  .etiqueta-comando {
+    display: block; margin-top: 9px; text-align: center; min-height: 17px;
+    font-family: var(--mono); font-size: 11px; letter-spacing: .1em;
+    text-transform: uppercase; color: var(--ciano);
+    opacity: 0; transition: opacity .25s;
+  }
+  .etiqueta-comando.visivel { opacity: 1; }
+
+  /* ---------- visor da camera ---------- */
+  .visor {
+    position: relative; aspect-ratio: 4 / 3; overflow: hidden;
+    background: #050a0e; border: 1px solid var(--traco); border-radius: var(--raio);
+    display: grid; place-items: center;
+    font-family: var(--mono); font-size: 11.5px; letter-spacing: .08em;
+    text-transform: uppercase; color: var(--nevoa-fraca); text-align: center; padding: 18px;
+  }
+  .visor canvas, .visor video { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .cantos { position: absolute; inset: 9px; pointer-events: none; }
+  .cantos::before, .cantos::after,
+  .cantos i::before, .cantos i::after {
+    content: ""; position: absolute; width: 15px; height: 15px;
+    border: 1px solid rgba(34,211,238,.42);
+  }
+  .cantos::before { top: 0; left: 0; border-right: 0; border-bottom: 0; }
+  .cantos::after { top: 0; right: 0; border-left: 0; border-bottom: 0; }
+  .cantos i::before { bottom: 0; left: 0; border-right: 0; border-top: 0; }
+  .cantos i::after { bottom: 0; right: 0; border-left: 0; border-top: 0; }
+
+  /* ---------- medidores das classes ---------- */
+  .medidores { margin-top: 16px; display: grid; gap: 10px; }
+  .medidor .cabeca {
+    display: flex; justify-content: space-between; align-items: baseline; gap: 10px;
+    margin-bottom: 5px; font-size: 13px;
+  }
+  .medidor .nome { color: var(--nevoa); transition: color .15s; }
+  .medidor.topo .nome { color: var(--texto); font-weight: 500; }
+  .medidor .pct {
+    font-family: var(--mono); font-size: 11.5px; color: var(--nevoa);
+    font-variant-numeric: tabular-nums;
+  }
+  .medidor.topo .pct { color: var(--ciano-claro); }
+  .trilho { height: 5px; background: #0d1a22; border-radius: 3px; overflow: hidden; }
+  .trilho > i {
+    display: block; height: 100%; width: 0; border-radius: 3px;
+    background: var(--nevoa-fraca);
+    transition: width .1s linear, background .15s;
+  }
+  .medidor.topo .trilho > i { background: var(--ciano); box-shadow: 0 0 9px rgba(34,211,238,.5); }
+
+  .marca {
+    display: inline-block; margin-left: 7px; padding: 0 6px;
+    font-family: var(--mono); font-size: 9.5px; font-weight: 600;
+    letter-spacing: .12em; border-radius: 2px; vertical-align: 1px;
+  }
+  .marca.liga    { color: var(--ciano);  background: rgba(34,211,238,.12);  border: 1px solid rgba(34,211,238,.3); }
+  .marca.desliga { color: var(--indigo); background: rgba(124,140,255,.12); border: 1px solid rgba(124,140,255,.3); }
+
+  /* ---------- faixa de sinal ---------- */
+  .grafico { position: relative; padding: 14px 18px 16px; }
+  #sinal { display: block; width: 100%; height: 96px; }
+  .legenda {
+    display: flex; flex-wrap: wrap; gap: 16px; margin-top: 10px;
+    font-family: var(--mono); font-size: 10.5px; letter-spacing: .08em;
+    text-transform: uppercase; color: var(--nevoa-fraca);
+  }
+  .legenda span { display: inline-flex; align-items: center; gap: 7px; }
+  .legenda .amostra { width: 14px; height: 2px; background: currentColor; }
+  .legenda .liga { color: var(--ciano); }
+  .legenda .desliga { color: var(--indigo); }
+  .legenda .corte .amostra {
+    height: 0; border-top: 1px dashed currentColor; background: none;
+  }
+
+  /* ---------- registro ---------- */
+  .registro ol { list-style: none; margin: 0; padding: 0; }
+  .registro li {
+    display: grid; grid-template-columns: auto 1fr auto; align-items: baseline; gap: 12px;
+    padding: 10px 0; border-bottom: 1px solid var(--traco); font-size: 13.5px;
+  }
+  .registro li:last-child { border-bottom: 0; }
+  .registro .hora {
+    font-family: var(--mono); font-size: 11.5px; color: var(--nevoa-fraca);
+    font-variant-numeric: tabular-nums;
+  }
+  .registro .gesto { color: var(--texto); }
+  .registro .efeito {
+    font-family: var(--mono); font-size: 10.5px; font-weight: 600;
+    letter-spacing: .12em; text-transform: uppercase;
+  }
+  .registro .efeito.on  { color: var(--ciano); }
+  .registro .efeito.off { color: var(--nevoa); }
+  .nenhum { font-size: 13px; color: var(--nevoa-fraca); }
+
+  .rodape {
+    margin-top: 22px; padding-top: 14px; border-top: 1px solid var(--traco);
+    font-size: 12.5px; line-height: 1.6; color: var(--nevoa-fraca);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    * { animation: none !important; transition-duration: .01ms !important; }
+  }
+</style>
+</head>
+<body>
+<div class="folha">
+
+  <div class="placa">
+    <div class="eixo">
+      <div class="selo"><i></i></div>
+      <div>
+        <h1>Controle de LED por gestos</h1>
+        <span class="sub">Teachable Machine · TensorFlow.js</span>
+      </div>
+    </div>
+    <div class="leituras">
+      <div class="leitura" id="taxa">— <b>fps</b></div>
+      <div class="sinalizador" id="sinalizador" data-estado="parado">Parado</div>
+    </div>
+  </div>
+
+  <div class="bancada">
+
+    <!-- ================= controles ================= -->
+    <section class="modulo">
+      <h2>Painel de controle</h2>
+      <div class="corpo">
+
+        <div class="campo">
+          <label for="url">Modelo</label>
+          <input id="url" type="text" spellcheck="false"
+                 placeholder="https://teachablemachine.withgoogle.com/models/.../">
+        </div>
+
+        <div class="campo">
+          <label for="tipo">Entrada</label>
+          <select id="tipo">
+            <option value="image">Imagem — câmera</option>
+            <option value="pose">Pose — câmera</option>
+            <option value="audio">Áudio — microfone</option>
+          </select>
+        </div>
+
+        <div class="acoes">
+          <button id="btn-iniciar">Iniciar</button>
+          <button id="btn-parar" class="discreto" disabled>Parar</button>
+        </div>
+        <p class="recado" id="recado"></p>
+
+        <div class="campo">
+          <label for="cmd-on">Gesto que liga</label>
+          <select id="cmd-on" disabled><option>carregue o modelo</option></select>
+        </div>
+
+        <div class="campo">
+          <label for="cmd-off">Gesto que desliga</label>
+          <select id="cmd-off" disabled><option>carregue o modelo</option></select>
+        </div>
+
+        <div class="campo">
+          <label for="limiar">Confiança mínima <span class="medida" id="limiar-medida">80%</span></label>
+          <input id="limiar" type="range" min="40" max="99" value="80">
+        </div>
+
+        <div class="campo">
+          <label for="estabilidade">Estabilidade <span class="medida" id="estabilidade-medida">10 quadros</span></label>
+          <input id="estabilidade" type="range" min="1" max="60" value="10">
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ================= instrumentos ================= -->
+    <div class="coluna">
+
+      <section class="modulo">
+        <h2>Indicador <span id="rotulo-carga"></span></h2>
+        <div class="corpo indicador" id="indicador">
+          <div>
+            <div class="lampada">
+              <div class="halo"></div>
+              <svg class="anel" viewBox="0 0 216 216" aria-hidden="true">
+                <circle class="pista" cx="108" cy="108" r="104"></circle>
+                <circle class="carga" id="carga" cx="108" cy="108" r="104"
+                        stroke-dasharray="653.45" stroke-dashoffset="653.45"></circle>
+              </svg>
+              <div class="bulbo"></div>
+            </div>
+            <div class="leitura-estado" id="estado">DESLIGADO</div>
+            <span class="etiqueta-comando" id="etiqueta"></span>
+          </div>
+          <div>
+            <div class="visor" id="visor">
+              <span id="visor-texto">câmera desligada</span>
+              <div class="cantos"><i></i></div>
+            </div>
+            <div class="medidores" id="medidores"></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="modulo">
+        <h2>Sinal <span style="letter-spacing:.06em;text-transform:none">últimos ~15 s</span></h2>
+        <div class="grafico">
+          <canvas id="sinal"></canvas>
+          <div class="legenda">
+            <span class="liga"><i class="amostra"></i>gesto que liga</span>
+            <span class="desliga"><i class="amostra"></i>gesto que desliga</span>
+            <span class="corte"><i class="amostra"></i>confiança mínima</span>
+          </div>
+        </div>
+      </section>
+
+      <section class="modulo registro">
+        <h2>Registro de comandos</h2>
+        <div class="corpo">
+          <ol id="log"></ol>
+          <p class="nenhum" id="log-vazio">Nenhum comando reconhecido ainda.</p>
+        </div>
+      </section>
+
+    </div>
+  </div>
+
+  <p class="rodape">
+    O LED só muda quando um gesto de comando é reconhecido — as demais classes passam sem efeito.
+    O anel em volta da lâmpada mostra o gesto sendo confirmado: ele fecha o círculo quando o
+    comando vale.
+  </p>
+
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@1.3.1/dist/tf.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@teachablemachine/image@0.8/dist/teachablemachine-image.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@teachablemachine/pose@0.8/dist/teachablemachine-pose.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@tensorflow-models/speech-commands@0.4.0/dist/speech-commands.min.js"></script>
+<script>
+const el = id => document.getElementById(id);
+const CHAVE_URL = "tm-led-url";
+const VOLTA = 2 * Math.PI * 104;   // circunferencia do anel de progresso
+
+let modelo = null;        // tmImage / tmPose / recognizer do speech-commands
+let webcam = null;
+let rodando = false;
+let classes = [];
+let aceso = false;
+
+// Um comando so vale depois de se repetir por N quadros seguidos.
+let candidato = -1;
+let repeticoes = 0;
+
+// Medicao de quadros por segundo (media movel simples).
+let ultimoInstante = 0;
+let fps = 0;
+
+// Historico para a faixa de sinal.
+const historico = [];
+const LIMITE_HISTORICO = 220;
+
+/* ================================================================
+   Lampada e feedback
+   ================================================================ */
+function acender(ligado) {
+  aceso = ligado;
+  el("indicador").classList.toggle("aceso", ligado);
+  el("estado").textContent = ligado ? "LIGADO" : "DESLIGADO";
+}
+
+function desenharCarga(fracao) {
+  el("carga").style.strokeDashoffset = VOLTA * (1 - Math.min(fracao, 1));
+}
+
+function anunciar(texto) {
+  const alvo = el("etiqueta");
+  alvo.textContent = texto;
+  alvo.classList.add("visivel");
+  clearTimeout(anunciar.timer);
+  anunciar.timer = setTimeout(() => alvo.classList.remove("visivel"), 2400);
+}
+
+function registrar(gesto, ligou) {
+  el("log-vazio").hidden = true;
+  const item = document.createElement("li");
+  item.innerHTML =
+    `<span class="hora">${new Date().toLocaleTimeString("pt-BR")}</span>` +
+    `<span class="gesto">${gesto}</span>` +
+    `<span class="efeito ${ligou ? "on" : "off"}">${ligou ? "ligou" : "desligou"}</span>`;
+  el("log").prepend(item);
+  while (el("log").children.length > 6) el("log").lastElementChild.remove();
+}
+
+function recado(texto, tom) {
+  el("recado").textContent = texto || "";
+  el("recado").dataset.tom = tom || "";
+}
+
+function sinalizar(texto, estado) {
+  el("sinalizador").textContent = texto;
+  el("sinalizador").dataset.estado = estado || "parado";
+}
+
+/* ================================================================
+   Classes do modelo
+   ================================================================ */
+// Descobre pelos nomes quais classes sao os comandos. "Desligar" contem
+// "ligar" dentro, entao ela precisa ser identificada primeiro.
+function adivinharComandos(nomes) {
+  const limpos = nomes.map(n => n.toLowerCase().trim());
+  const off = limpos.findIndex(n => n.startsWith("deslig") || n.includes("apag") || n === "off");
+  const on = limpos.findIndex((n, i) =>
+    i !== off && (n.startsWith("lig") || n.includes("acend") || n === "on"));
+  return { on, off };
+}
+
+function montarClasses(nomes) {
+  classes = nomes;
+  const palpite = adivinharComandos(nomes);
+
+  [["cmd-on", palpite.on], ["cmd-off", palpite.off]].forEach(([id, sugerido]) => {
+    const sel = el(id);
+    sel.innerHTML = "";
+    sel.add(new Option("— nenhum —", "-1"));
+    nomes.forEach((nome, i) => sel.add(new Option(nome, String(i))));
+    sel.value = String(sugerido);
+    sel.disabled = false;
+    sel.onchange = marcarComandos;
+  });
+
+  el("medidores").innerHTML = nomes.map((nome, i) => `
+    <div class="medidor" id="medidor-${i}">
+      <div class="cabeca">
+        <span class="nome">${nome}<span class="marca" id="marca-${i}" hidden></span></span>
+        <span class="pct" id="pct-${i}">0%</span>
+      </div>
+      <div class="trilho"><i id="barra-${i}"></i></div>
+    </div>`).join("");
+
+  historico.length = 0;
+  marcarComandos();
+}
+
+// Etiqueta LIGA / DESLIGA ao lado das classes escolhidas.
+function marcarComandos() {
+  const on = Number(el("cmd-on").value);
+  const off = Number(el("cmd-off").value);
+  classes.forEach((_, i) => {
+    const marca = el("marca-" + i);
+    const papel = i === on ? "liga" : i === off ? "desliga" : "";
+    marca.hidden = !papel;
+    marca.textContent = papel.toUpperCase();
+    marca.className = "marca " + papel;
+  });
+}
+
+/* ================================================================
+   Faixa de sinal
+   ================================================================ */
+function desenharSinal() {
+  const canvas = el("sinal");
+  const escala = window.devicePixelRatio || 1;
+  const largura = canvas.clientWidth;
+  const altura = canvas.clientHeight;
+  if (!largura || !altura) return;
+
+  if (canvas.width !== largura * escala || canvas.height !== altura * escala) {
+    canvas.width = largura * escala;
+    canvas.height = altura * escala;
+  }
+
+  const ctx = canvas.getContext("2d");
+  ctx.setTransform(escala, 0, 0, escala, 0, 0);
+  ctx.clearRect(0, 0, largura, altura);
+
+  const y = v => altura - 3 - v * (altura - 6);
+
+  // grade de referencia
+  ctx.strokeStyle = "#172733";
+  ctx.lineWidth = 1;
+  [0.25, 0.5, 0.75].forEach(v => {
+    ctx.beginPath();
+    ctx.moveTo(0, Math.round(y(v)) + .5);
+    ctx.lineTo(largura, Math.round(y(v)) + .5);
+    ctx.stroke();
+  });
+
+  // linha da confianca minima
+  const limiar = Number(el("limiar").value) / 100;
+  ctx.save();
+  ctx.setLineDash([4, 4]);
+  ctx.strokeStyle = "#4d616f";
+  ctx.beginPath();
+  ctx.moveTo(0, Math.round(y(limiar)) + .5);
+  ctx.lineTo(largura, Math.round(y(limiar)) + .5);
+  ctx.stroke();
+  ctx.restore();
+
+  if (historico.length < 2) return;
+
+  const passo = largura / (LIMITE_HISTORICO - 1);
+  const x = i => largura - (historico.length - 1 - i) * passo;
+
+  // area sob a trilha do gesto que liga
+  const gradiente = ctx.createLinearGradient(0, 0, 0, altura);
+  gradiente.addColorStop(0, "rgba(34,211,238,.22)");
+  gradiente.addColorStop(1, "rgba(34,211,238,0)");
+  ctx.beginPath();
+  ctx.moveTo(x(0), altura);
+  historico.forEach((p, i) => ctx.lineTo(x(i), y(p.on)));
+  ctx.lineTo(x(historico.length - 1), altura);
+  ctx.closePath();
+  ctx.fillStyle = gradiente;
+  ctx.fill();
+
+  // trilhas
+  [["off", "#7c8cff", 1.4], ["on", "#22d3ee", 1.8]].forEach(([campo, cor, grossura]) => {
+    ctx.beginPath();
+    historico.forEach((p, i) => (i ? ctx.lineTo(x(i), y(p[campo])) : ctx.moveTo(x(i), y(p[campo]))));
+    ctx.strokeStyle = cor;
+    ctx.lineWidth = grossura;
+    ctx.lineJoin = "round";
+    ctx.stroke();
+  });
+
+  // ponta da trilha principal
+  const ultimo = historico[historico.length - 1];
+  ctx.beginPath();
+  ctx.arc(x(historico.length - 1), y(ultimo.on), 2.6, 0, Math.PI * 2);
+  ctx.fillStyle = "#a5f3fc";
+  ctx.fill();
+}
+
+/* ================================================================
+   Decisao: so age quando o gesto se mantem estavel
+   ================================================================ */
+function processar(probs) {
+  const on = Number(el("cmd-on").value);
+  const off = Number(el("cmd-off").value);
+
+  let topo = 0;
+  probs.forEach((p, i) => {
+    el("barra-" + i).style.width = (p * 100) + "%";
+    el("pct-" + i).textContent = Math.round(p * 100) + "%";
+    if (p > probs[topo]) topo = i;
+  });
+  classes.forEach((_, i) => el("medidor-" + i).classList.toggle("topo", i === topo));
+
+  historico.push({ on: on >= 0 ? probs[on] : 0, off: off >= 0 ? probs[off] : 0 });
+  if (historico.length > LIMITE_HISTORICO) historico.shift();
+  desenharSinal();
+
+  const limiar = Number(el("limiar").value) / 100;
+  const necessarias = Number(el("estabilidade").value);
+
+  if (probs[topo] >= limiar) {
+    repeticoes = topo === candidato ? repeticoes + 1 : 1;
+    candidato = topo;
+  } else {
+    candidato = -1;
+    repeticoes = 0;
+  }
+
+  // O anel so enche para gestos que realmente comandam alguma coisa.
+  const comandando = candidato === on || candidato === off;
+  desenharCarga(comandando ? repeticoes / necessarias : 0);
+  el("rotulo-carga").textContent =
+    comandando && repeticoes < necessarias ? `confirmando ${classes[candidato]}` : "";
+
+  // Dispara uma unica vez, no quadro em que o gesto se firma.
+  if (repeticoes !== necessarias || !comandando) return;
+
+  const ligar = candidato === on;
+  anunciar("comando · " + classes[candidato]);
+  if (ligar !== aceso) {
+    acender(ligar);
+    registrar(classes[candidato], ligar);
+  }
+}
+
+/* ================================================================
+   Modelo e captura
+   ================================================================ */
+function baseUrl() {
+  let url = el("url").value.trim();
+  if (!url) throw new Error("cole a URL do modelo do Teachable Machine.");
+  if (!url.endsWith("/")) url += "/";
+  return url;
+}
+
+async function iniciarCamera(tipo) {
+  const base = baseUrl();
+  const lib = tipo === "pose" ? tmPose : tmImage;
+
+  sinalizar("Carregando", "carregando");
+  modelo = await lib.load(base + "model.json", base + "metadata.json");
+  montarClasses(modelo.getClassLabels());
+
+  sinalizar("Abrindo câmera", "carregando");
+  webcam = new lib.Webcam(400, 300, true);   // true = espelhado
+  await webcam.setup();
+  await webcam.play();
+  el("visor-texto").hidden = true;
+  el("visor").prepend(webcam.canvas);
+
+  rodando = true;
+  ultimoInstante = performance.now();
+  sinalizar("Ao vivo", "vivo");
+  recado("Faça o gesto e segure até o anel fechar.");
+  laco(tipo);
+}
+
+async function laco(tipo) {
+  if (!rodando) return;
+  webcam.update();
+
+  let previsao;
+  if (tipo === "pose") {
+    const saida = await modelo.estimatePose(webcam.canvas);
+    previsao = await modelo.predict(saida.posenetOutput);
+  } else {
+    previsao = await modelo.predict(webcam.canvas);
+  }
+  processar(previsao.map(p => p.probability));
+  medirTaxa();
+
+  requestAnimationFrame(() => laco(tipo));
+}
+
+function medirTaxa() {
+  const agora = performance.now();
+  const intervalo = agora - ultimoInstante;
+  ultimoInstante = agora;
+  if (intervalo <= 0) return;
+  fps = fps ? fps * 0.9 + (1000 / intervalo) * 0.1 : 1000 / intervalo;
+  el("taxa").innerHTML = `${Math.round(fps)} <b>fps</b>`;
+  mostrarEstabilidade();
+}
+
+async function iniciarAudio() {
+  const base = baseUrl();
+
+  sinalizar("Carregando", "carregando");
+  modelo = speechCommands.create("BROWSER_FFT", undefined, base + "model.json", base + "metadata.json");
+  await modelo.ensureModelLoaded();
+  montarClasses(modelo.wordLabels());
+
+  sinalizar("Abrindo microfone", "carregando");
+  el("visor-texto").textContent = "ouvindo pelo microfone";
+  await modelo.listen(
+    resultado => processar(Array.from(resultado.scores)),
+    { includeSpectrogram: true, probabilityThreshold: 0, overlapFactor: 0.5 }
+  );
+
+  rodando = true;
+  sinalizar("Ao vivo", "vivo");
+  recado("Fale o comando e aguarde a confirmação.");
+}
+
+/* ================================================================
+   Controles
+   ================================================================ */
+async function iniciar() {
+  el("btn-iniciar").disabled = true;
+  recado("");
+  try {
+    localStorage.setItem(CHAVE_URL, el("url").value.trim());
+    const tipo = el("tipo").value;
+    if (tipo === "audio") await iniciarAudio();
+    else await iniciarCamera(tipo);
+    el("btn-parar").disabled = false;
+  } catch (e) {
+    console.error(e);
+    sinalizar("Erro", "erro");
+    recado("Não deu para iniciar: " + e.message, "erro");
+    el("btn-iniciar").disabled = false;
+  }
+}
+
+async function parar() {
+  rodando = false;
+  if (webcam) { webcam.stop(); webcam = null; }
+  if (modelo && typeof modelo.stopListening === "function") await modelo.stopListening();
+
+  el("visor").querySelectorAll("canvas, video").forEach(n => n.remove());
+  el("visor-texto").textContent = "câmera desligada";
+  el("visor-texto").hidden = false;
+
+  acender(false);
+  candidato = -1;
+  repeticoes = 0;
+  fps = 0;
+  desenharCarga(0);
+  el("rotulo-carga").textContent = "";
+  el("taxa").innerHTML = "— <b>fps</b>";
+
+  el("btn-iniciar").disabled = false;
+  el("btn-parar").disabled = true;
+  sinalizar("Parado", "parado");
+  recado("");
+}
+
+// Mostra os quadros e, quando ja sabemos a taxa, o tempo equivalente.
+function mostrarEstabilidade() {
+  const quadros = Number(el("estabilidade").value);
+  const segundos = fps ? " · " + (quadros / fps).toFixed(1).replace(".", ",") + " s" : "";
+  el("estabilidade-medida").textContent = quadros + " quadros" + segundos;
+}
+
+el("btn-iniciar").addEventListener("click", iniciar);
+el("btn-parar").addEventListener("click", parar);
+el("limiar").addEventListener("input", e => {
+  el("limiar-medida").textContent = e.target.value + "%";
+  desenharSinal();
+});
+el("estabilidade").addEventListener("input", mostrarEstabilidade);
+window.addEventListener("resize", desenharSinal);
+
+el("url").value = localStorage.getItem(CHAVE_URL) || "";
+mostrarEstabilidade();
+desenharSinal();
+</script>
+</body>
+</html>
